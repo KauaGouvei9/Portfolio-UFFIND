@@ -26,7 +26,7 @@ export const entregasImersao = [
     nome: 'Análise Competitiva',
     nomeCompleto: 'Análise Competitiva',
     rota: '/imersao/analise-competitiva',
-    resumo: 'Nove sistemas comparados: diretos, indiretos e inspiradores.',
+    resumo: 'Sistemas concorrentes e inspiradores comparados lado a lado.',
   },
   {
     id: 'mapa-empatia',

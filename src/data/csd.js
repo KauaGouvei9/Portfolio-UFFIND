@@ -16,7 +16,7 @@ export const quadrantes = [
     id: 'suposicoes',
     titulo: 'Suposições',
     descricao:
-      'O que se acredita ser verdade, mas ainda não foi confirmado. Aqui entram as impressões sobre o comportamento dos alunos que ninguém verificou. É a coluna de maior risco, porque essas impressões costumam ser tratadas como certezas.',
+      'O que se acredita ser verdade, mas ainda não foi confirmado. Aqui entram as impressões sobre o comportamento das pessoas que ninguém verificou. É a coluna de maior risco, porque essas impressões costumam ser tratadas como certezas.',
     nota: 'Boa parte destas foi confirmada ou descartada pelo questionário e pelas entrevistas.',
   },
   {

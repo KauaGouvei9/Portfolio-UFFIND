@@ -40,7 +40,7 @@ export const projeto = {
       icone: 'busca',
       titulo: 'Busca de salas e espaços',
       texto:
-        'Encontrar salas de aula, laboratórios e espaços do IC sem depender de login ou de perguntar a um colega.',
+        'Encontrar salas de aula, laboratórios e espaços do IC sem depender de login ou de perguntar a alguém.',
     },
     {
       icone: 'servicos',

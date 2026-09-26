@@ -7,7 +7,7 @@
 
 export const justificativaEscolha = [
   'A seleção partiu do problema do usuário. Procuramos sistemas que já respondem à pergunta "onde fica e como eu chego" dentro de um campus ou de um prédio grande.',
-  'Os dois primeiros concorrentes diretos são os sistemas que o aluno do IC já tem à mão hoje: o site do Instituto e o idUFF. Eles definem a régua real, porque é com eles que a solução vai ser comparada no dia a dia. Em seguida entram guias e mapas de outras universidades, que mostram como o mesmo problema foi resolvido em contextos institucionais parecidos, com restrições semelhantes de orçamento e de acesso a dados acadêmicos.',
+  'Os dois primeiros concorrentes diretos são os sistemas que quem frequenta o IC já tem à mão hoje: o site do Instituto e o idUFF. Eles definem a régua real, porque é com eles que a solução vai ser comparada no dia a dia. Em seguida entram guias e mapas de outras universidades, que mostram como o mesmo problema foi resolvido em contextos institucionais parecidos, com restrições semelhantes de orçamento e de acesso a dados acadêmicos.',
   'Como concorrentes indiretos entraram sites de outras unidades da UFF, que organizam bem a informação mas não tratam de salas, e a combinação de mural físico com grupos de WhatsApp. Essa combinação informal é o que hoje realmente resolve o problema, segundo o questionário, e por isso é a referência a ser superada.',
   'Os inspiradores não competem com o projeto. Eles definem o padrão de experiência que as pessoas já conhecem quando precisam se localizar em ambiente fechado.',
 ]

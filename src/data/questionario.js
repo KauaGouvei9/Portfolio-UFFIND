@@ -7,8 +7,8 @@
 export const questionario = {
   amostra: {
     paragrafos: [
-      'Quem respondeu é quase todo aluno de graduação, com forte concentração em Sistemas de Informação e presença menor de Ciência da Computação.',
-      'A amostra é de conveniência, então os percentuais orientam requisitos de projeto e não descrevem toda a comunidade do IC. Algumas perguntas entraram depois do início da coleta e por isso têm base um pouco menor que o restante.',
+      'O questionário é aberto a toda a comunidade do Instituto: estudantes, professores, servidores e quem circula pelo prédio sem ter vínculo com a UFF.',
+      'No recorte analisado até aqui, a maior parte das respostas veio de estudantes de graduação, com concentração em Sistemas de Informação. A amostra é de conveniência, então os percentuais orientam requisitos de projeto e não descrevem a distribuição real do Instituto. Algumas perguntas entraram depois do início da coleta e por isso têm base um pouco menor que o restante.',
       'A coleta segue aberta, e os percentuais desta página são uma leitura do momento em que a análise foi feita.',
     ],
   },
@@ -159,13 +159,13 @@ export const questionario = {
     { nome: 'Busca centralizada', implicacao: 'Um ponto único de entrada para salas, horários, avisos e serviços.' },
     { nome: 'Orientação espacial', implicacao: 'Mapa por blocos, rotas internas e identificação clara das salas.' },
     { nome: 'Atualização', implicacao: 'Estado da informação, avisos e mudanças de sala com data visível.' },
-    { nome: 'Integração', implicacao: 'Relacionar turma, horário e sala ao contexto acadêmico do estudante.' },
+    { nome: 'Integração', implicacao: 'Relacionar turma, horário e sala ao vínculo de quem está consultando.' },
     { nome: 'Acesso móvel', implicacao: 'Interface responsiva ou aplicativo, com QR codes apenas como apoio.' },
     { nome: 'Onboarding', implicacao: 'Guias curtos para calouros, sem esconder funções de quem já tem prática.' },
   ],
 
   limitacoes:
-    'A amostra é de conveniência e concentrada em alunos de graduação, sobretudo de Sistemas de Informação. As escalas são ordinais, os campos abertos têm poucas respostas substantivas e as associações não estabelecem causalidade. Os resultados servem para orientar requisitos e novas avaliações de usabilidade.',
+    'No recorte analisado, a amostra é de conveniência e concentrada em estudantes de graduação, sobretudo de Sistemas de Informação, o que deixa professores, servidores e visitantes sub-representados. As escalas são ordinais, os campos abertos têm poucas respostas substantivas e as associações não estabelecem causalidade. Os resultados servem para orientar requisitos e novas avaliações de usabilidade.',
 
   fonte: 'Dados da planilha exportada do Google Forms. Semente das reamostragens: 20260923.',
 }

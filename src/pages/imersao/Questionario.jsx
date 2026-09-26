@@ -16,8 +16,8 @@ export default function Questionario() {
       <header className={pagina.cabecalho}>
         <h1>Questionário</h1>
         <p className={`textoCorrido ${pagina.intro}`}>
-          Técnica quantitativa da Imersão, respondida por alunos do Instituto de
-          Computação.
+          Técnica quantitativa da Imersão, aberta a quem estuda, trabalha ou visita o
+          Instituto de Computação.
         </p>
       </header>
 

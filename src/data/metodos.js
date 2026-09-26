@@ -30,9 +30,9 @@ export const metodos = {
     ],
     rotuloBotao: 'Responder o questionário',
     notaFormulario:
-      'O formulário está aberto no Google Forms e pode ser respondido por qualquer aluno do IC.',
+      'O formulário está aberto no Google Forms e pode ser respondido por qualquer pessoa que frequente o IC, seja estudando, trabalhando ou visitando.',
     planoAnalise:
-      'As respostas serão tabuladas por frequência e apresentadas aqui em gráficos, comparando os canais que os alunos usam hoje para se localizar e os tipos de informação que eles não conseguem encontrar.',
+      'As respostas serão tabuladas por frequência e apresentadas aqui em gráficos, comparando os canais que as pessoas usam hoje para se localizar e os tipos de informação que elas não conseguem encontrar.',
     estadoVazioResultados:
       'A coleta de respostas está aberta. Os gráficos e a leitura dos resultados serão publicados nesta seção quando o questionário for encerrado.',
     planoCorrelacoes:

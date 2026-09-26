@@ -7,7 +7,7 @@ export const entrevistas = {
     nome: 'Entrevista semiestruturada individual',
     paragrafos: [
       'A entrevista semiestruturada combina perguntas planejadas com liberdade para aprofundar tópicos que surjam durante a conversa. Segundo Barbosa e Silva (cap. 5), ela permite coletar informações ricas e individualizadas, e é adequada quando é preciso compreender experiências, dificuldades e expectativas dos usuários em relação a um sistema.',
-      'No contexto deste projeto, a técnica foi escolhida porque o problema envolve experiências distintas entre alunos de cursos e períodos diferentes. Um roteiro flexível permite comparar situações recorrentes e, ao mesmo tempo, explorar particularidades relatadas por cada participante.',
+      'No contexto deste projeto, a técnica foi escolhida porque o problema envolve experiências distintas entre quem estuda, quem trabalha e quem apenas visita o Instituto. Um roteiro flexível permite comparar situações recorrentes e, ao mesmo tempo, explorar particularidades relatadas por cada participante.',
     ],
     referencia: 'BARBOSA, S. D. J.; SILVA, B. S. Interação Humano-Computador. Cap. 5.',
   },
@@ -24,7 +24,7 @@ export const entrevistas = {
 
   perfil: {
     intro:
-      'A pesquisa não se limita ao corpo discente. Professores e funcionários vivem o mesmo problema por outro ângulo: além de precisarem se localizar, são eles que respondem quando alguém se perde. Os perfis foram definidos a partir das personas e dos contextos de uso identificados na Matriz CSD e na Análise Competitiva.',
+      'O foco principal são os estudantes do IC, sobretudo os calouros, que enfrentam o problema na forma mais aguda. A pesquisa foi ampliada para professores e funcionários porque eles vivem a mesma falta de informação por outro ângulo: além de precisarem se localizar, são eles que respondem quando alguém se perde. Os perfis saíram das personas e dos contextos de uso identificados na Matriz CSD e na Análise Competitiva.',
     lista: [
       {
         nome: 'Alunos de graduação',
