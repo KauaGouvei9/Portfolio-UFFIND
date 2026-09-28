@@ -32,35 +32,35 @@ export const entrevistas = {
         nome: 'Três estudantes do IC',
         icone: 'alunos',
         descricao:
-          'Sistemas de Informação, todos na metade do curso. Representam o perfil que dominou as respostas do questionário, e foram ouvidos para explicar o porquê por trás daqueles percentuais.',
+          'Sistemas de Informação, os três no quinto período, com dois anos e meio de convivência com o prédio. Representam o perfil que dominou as respostas do questionário, e foram ouvidos para explicar o porquê por trás daqueles percentuais.',
         porque: 'Vivem o problema todo início de período e já criaram estratégias próprias.',
       },
       {
-        nome: 'Uma estudante de outro instituto',
+        nome: 'Uma visitante de outro instituto',
         icone: 'alunos',
         descricao:
-          'Cursa a graduação em outra unidade da UFF e frequenta o IC há pouco tempo. É a participante mais próxima do visitante que o projeto declara atender.',
-        porque: 'Usa o prédio sem pertencer a ele, que é a situação de quem chega de fora.',
+          'Estudante de Engenharia Civil no segundo período, que passou a frequentar o IC no período passado. Entra na pesquisa pelo grupo dos visitantes: usa o prédio sem pertencer a ele e sem o vocabulário de quem estuda aqui.',
+        porque: 'É a situação de quem chega de fora, o público que o projeto declara atender e que o questionário não alcançou.',
       },
       {
         nome: 'Um professor do Instituto',
         icone: 'professores',
         descricao:
-          'Leciona disciplinas de Banco de Dados para mais de um curso. Precisa localizar salas a cada período e é procurado por alunos que se perderam.',
-        porque: 'Está na ponta que usa o espaço e absorve o problema de quem não achou.',
+          'Leciona Banco de Dados para Ciência da Computação, Sistemas de Informação e, como disciplina de serviço, para Estatística. Está no IC há quinze anos, desde 2011.',
+        porque: 'Está na ponta que usa o espaço e absorve o problema de quem não achou a sala.',
       },
       {
         nome: 'Um servidor da área técnica',
         icone: 'funcionarios',
         descricao:
-          'Alimenta o site do Instituto com informação. É a pessoa que publica aquilo que os demais procuram.',
+          'Analista de TI do Instituto há vinte e dois anos, desde 2004. É uma das pessoas que alimentam o site do IC com informação, ou seja, quem publica aquilo que os demais procuram.',
         porque: 'Se a informação não chega ao site, o gargalo passa por ele.',
       },
       {
         nome: 'Uma servidora da secretaria',
         icone: 'funcionarios',
         descricao:
-          'Atende no balcão e mantém a planilha de alocação das salas. É quem responde quando alguém se perde.',
+          'Assistente em administração na Secretaria do Instituto há quase quinze anos. Atende no balcão e mantém a planilha de alocação das salas.',
         porque: 'Detém o dado original e vê de perto quem não conseguiu encontrar sozinho.',
       },
     ],
@@ -320,7 +320,7 @@ export const entrevistas = {
         numero: 3,
         titulo: 'O WhatsApp é a camada que sincroniza o sistema oficial',
         texto:
-          'Os sete recorrem a pessoas, e o detalhe que surpreende é quem. Um servidor com mais de duas décadas de Instituto consulta o grupo dos colegas porque a informação de lá chega antes da que ele tem em mãos. O professor mantém grupo de cada turma, e é lá que o aluno perdido pergunta.',
+          'Os sete recorrem a pessoas, e o detalhe que surpreende é quem. O analista de TI, com vinte e dois anos de Instituto, consulta o grupo dos colegas porque a informação de lá chega antes da que ele tem em mãos. O professor mantém grupo de cada turma, e é lá que o aluno perdido pergunta.',
         citacao: 'Geralmente eles têm uma precisão maior, são mais atualizados.',
         implicacao:
           'O canal informal não é falha de usuário, é infraestrutura. A solução precisa alimentá-lo, com conteúdo pronto para colar em uma conversa.',
@@ -338,7 +338,7 @@ export const entrevistas = {
         numero: 5,
         titulo: 'A facilidade dos veteranos é memorização, não sistema',
         texto:
-          'O professor afirma não ter problema algum e explica por quê: tudo que é administrativo fica no mesmo andar, e ele decorou em anos de rotina. Ele mesmo nomeia o próprio viés e observa que alguém de fora não teria esse ponto de partida.',
+          'O professor, com quinze anos de casa, afirma não ter problema algum e explica por quê: tudo que é administrativo fica no quarto andar, e ele decorou em anos de rotina. Ele mesmo nomeia o próprio viés de senioridade e observa que alguém de fora não teria esse ponto de partida.',
         citacao: 'Não sabe nem sequer que no quarto andar são as secretarias.',
         implicacao:
           'O sistema não ficou fácil. Algumas pessoas construíram atalhos particulares. O projeto precisa entregar a quem chega o que hoje só o tempo de casa oferece.',
@@ -347,7 +347,7 @@ export const entrevistas = {
         numero: 6,
         titulo: 'A informação é endereçada por código, não por significado',
         texto:
-          'A participante de fora do Instituto resumiu a barreira de entrada: o endereço da aula é dado pelo código da disciplina, e quem está chegando ainda não tem esse vocabulário. O mural físico foi descrito como grande demais e sem distinção clara entre curso e matéria.',
+          'A visitante de Engenharia Civil resumiu a barreira de entrada: o endereço da aula é dado pelo código da disciplina, e quem está chegando ainda não tem esse vocabulário. O mural físico foi descrito como grande demais e sem distinção clara entre curso e matéria.',
         citacao:
           'Não tem "a sala da matéria tal", é "a sala da matéria com o código".',
         implicacao:
@@ -367,7 +367,7 @@ export const entrevistas = {
         numero: 8,
         titulo: 'Não é falta de recurso, é falta de descoberta',
         texto:
-          'Três dos quatro estudantes nunca tinham ouvido falar do site do Instituto. O único participante que o acessa com frequência é justamente quem o alimenta. Sobre o idUFF, o caso mais eloquente veio de um servidor com mais de vinte anos de casa, que não sabia que o sistema trazia informação de sala.',
+          'Três dos quatro estudantes nunca tinham ouvido falar do site do Instituto. O único participante que o acessa com frequência é justamente quem o alimenta. Sobre o idUFF, o caso mais eloquente veio do analista de TI, com vinte e dois anos de casa, que não sabia que o sistema trazia informação de sala.',
         citacao:
           'Eu tanto não precisei, como também não sabia que pelo idUFF tinha essa disponibilidade.',
         implicacao:
@@ -392,10 +392,11 @@ export const entrevistas = {
         'O professor diz que não existe problema. A servidora da secretaria diz que o mais difícil é a divulgação da informação. Mesma instituição, leituras opostas. Não é contradição a resolver escolhendo um lado: a dificuldade é invisível para quem já a superou por conta própria e muito visível para quem atende quem não superou. Isso ajuda a explicar por que o problema persiste sem grande pressão por solução.',
     },
 
+    // Lista de limitacoes mantida aqui por decisao do grupo, fora da pagina.
+    // Para voltar a publicar, basta renderizar este array em uma secao nova.
     limitacoes: [
-      'Nenhum calouro de curso do IC foi entrevistado, embora o How Might We aponte esse perfil como o mais afetado. Três dos quatro estudantes estão na metade do curso.',
-      'Nenhum visitante sem vínculo com a UFF participou. A estudante de outro instituto é a aproximação mais próxima disponível.',
-      'Em duas conversas o entrevistador saiu do roteiro e sugeriu respostas ao formular a pergunta. O material ficou mais rico, mas o viés precisa ser considerado na leitura.',
+      'Nenhum calouro de curso do IC foi entrevistado, embora o How Might We aponte esse perfil como o mais afetado. Os três estudantes do Instituto estão na metade do curso.',
+      'Nenhum visitante sem vínculo nenhum com a UFF participou. A estudante de Engenharia Civil é a aproximação mais próxima disponível.',
     ],
   },
 }

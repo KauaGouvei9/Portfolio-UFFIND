@@ -42,7 +42,9 @@ export default function Entrevistas() {
         </p>
       </header>
 
-      {/* Os achados abrem a pagina. O metodo vem depois, a partir da secao 05. */}
+      {/* Resumo antes do metodo, como o resumo de um artigo. A ordem das
+          secoes segue a convencao: tecnica, participantes, coleta, roteiro,
+          consentimento, analise e so entao os resultados. */}
       <ul className={estilos.chaves}>
         {entrevistas.resultados.chave.map((item) => (
           <li key={item.titulo} className={estilos.chave}>
@@ -52,89 +54,35 @@ export default function Entrevistas() {
         ))}
       </ul>
 
-      <section className={pagina.secao} aria-labelledby="conclusoes">
+      <section aria-labelledby="tecnica">
         <div className={pagina.tituloSecao}>
           <span className="numeroLegenda">01</span>
-          <h2 id="conclusoes">{entrevistas.resultados.titulo}</h2>
+          <h2 id="tecnica">A técnica e o objetivo</h2>
         </div>
-        <p className={estilos.abertura}>{entrevistas.resultados.intro}</p>
-      </section>
+        {entrevistas.tecnica.paragrafos.map((paragrafo, indice) => (
+          <p key={indice} className="textoCorrido">
+            {paragrafo}
+          </p>
+        ))}
+        <p className={estilos.referencia}>{entrevistas.tecnica.referencia}</p>
 
-      <section className={pagina.secao} aria-labelledby="temas">
-        <div className={pagina.tituloSecao}>
-          <span className="numeroLegenda">02</span>
-          <h2 id="temas">Os temas</h2>
-        </div>
+        <h3 className={estilos.subtitulo}>Objetivo geral</h3>
+        <p className="textoCorrido">{entrevistas.objetivo.geral}</p>
 
-        <ol className={estilos.temas}>
-          {entrevistas.resultados.temas.map((tema) => (
-            <li key={tema.numero} className={estilos.tema}>
-              <h3 className={estilos.temaTitulo}>
-                <span className={estilos.temaNumero} aria-hidden="true">
-                  {String(tema.numero).padStart(2, '0')}
-                </span>
-                {tema.titulo}
-              </h3>
-
-              <p className={estilos.temaTexto}>{tema.texto}</p>
-
-              <blockquote className={estilos.temaCitacao}>
-                <Quote className={estilos.temaCitacaoIcone} size={16} aria-hidden="true" />
-                {tema.citacao}
-              </blockquote>
-
-              <p className={estilos.temaImplicacao}>
-                <span className={estilos.temaImplicacaoRotulo}>O que isso exige do design</span>
-                {tema.implicacao}
-              </p>
+        <h3 className={estilos.subtitulo}>Objetivos específicos</h3>
+        <ul className={estilos.listaMarcada}>
+          {entrevistas.objetivo.especificos.map((item) => (
+            <li key={item} className={estilos.itemMarcado}>
+              <span className={estilos.marcador} aria-hidden="true" />
+              {item}
             </li>
           ))}
-        </ol>
-      </section>
-
-      <section className={pagina.secao} aria-labelledby="requisitos">
-        <div className={pagina.tituloSecao}>
-          <span className="numeroLegenda">03</span>
-          <h2 id="requisitos">Requisitos que vão para a Ideação</h2>
-        </div>
-
-        <div className={estilos.rolagem} tabIndex="0" role="region" aria-labelledby="requisitos">
-          <table className={estilos.tabela}>
-            <caption>
-              Cada requisito aponta o tema de onde saiu, para que a origem do dado continue
-              rastreável na próxima fase.
-            </caption>
-            <thead>
-              <tr>
-                <th scope="col">Requisito</th>
-                <th scope="col">Origem</th>
-              </tr>
-            </thead>
-            <tbody>
-              {entrevistas.resultados.requisitos.map((item) => (
-                <tr key={item.requisito}>
-                  <th scope="row" className={estilos.celulaRequisito}>
-                    {item.requisito}
-                  </th>
-                  <td className={estilos.celulaOrigem}>{item.origem}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-
-        <div className={estilos.tensao}>
-          <Scale className={estilos.tensaoIcone} size={22} aria-hidden="true" />
-          <div>
-            <h3 className={estilos.tensaoTitulo}>{entrevistas.resultados.tensao.titulo}</h3>
-            <p className={estilos.tensaoTexto}>{entrevistas.resultados.tensao.texto}</p>
-          </div>
-        </div>
+        </ul>
       </section>
 
       <section className={pagina.secao} aria-labelledby="perfil">
         <div className={pagina.tituloSecao}>
-          <span className="numeroLegenda">04</span>
+          <span className="numeroLegenda">02</span>
           <h2 id="perfil">Quem participou, e por que estas pessoas</h2>
         </div>
         <p className={`textoCorrido ${pagina.intro}`}>{entrevistas.perfil.intro}</p>
@@ -167,74 +115,9 @@ export default function Entrevistas() {
         </div>
       </section>
 
-      <section className={pagina.secao} aria-labelledby="analise">
-        <div className={pagina.tituloSecao}>
-          <span className="numeroLegenda">05</span>
-          <h2 id="analise">Como os dados foram analisados</h2>
-        </div>
-        <p className={`textoCorrido ${pagina.intro}`}>{entrevistas.analise.intro}</p>
-
-        <ol className={estilos.etapas}>
-          {entrevistas.analise.etapas.map((etapa, indice) => (
-            <li key={etapa.titulo} className={estilos.etapa}>
-              <span className={estilos.numeroEtapa} aria-hidden="true">
-                {indice + 1}
-              </span>
-              <div>
-                <h3 className={estilos.etapaTitulo}>{etapa.titulo}</h3>
-                <p className={estilos.etapaTexto}>{etapa.texto}</p>
-              </div>
-            </li>
-          ))}
-        </ol>
-
-        <p className={estilos.referencia}>{entrevistas.analise.referencia}</p>
-      </section>
-
-      <section className={pagina.secao} aria-labelledby="limitacoes">
-        <div className={pagina.tituloSecao}>
-          <span className="numeroLegenda">06</span>
-          <h2 id="limitacoes">Limitações</h2>
-        </div>
-        <ul className={estilos.listaMarcada}>
-          {entrevistas.resultados.limitacoes.map((item) => (
-            <li key={item} className={estilos.itemMarcado}>
-              <span className={estilos.marcador} aria-hidden="true" />
-              {item}
-            </li>
-          ))}
-        </ul>
-      </section>
-
-      <section className={pagina.secao} aria-labelledby="tecnica">
-        <div className={pagina.tituloSecao}>
-          <span className="numeroLegenda">07</span>
-          <h2 id="tecnica">A técnica e o objetivo</h2>
-        </div>
-        {entrevistas.tecnica.paragrafos.map((paragrafo, indice) => (
-          <p key={indice} className="textoCorrido">
-            {paragrafo}
-          </p>
-        ))}
-        <p className={estilos.referencia}>{entrevistas.tecnica.referencia}</p>
-
-        <h3 className={estilos.subtitulo}>Objetivo geral</h3>
-        <p className="textoCorrido">{entrevistas.objetivo.geral}</p>
-
-        <h3 className={estilos.subtitulo}>Objetivos específicos</h3>
-        <ul className={estilos.listaMarcada}>
-          {entrevistas.objetivo.especificos.map((item) => (
-            <li key={item} className={estilos.itemMarcado}>
-              <span className={estilos.marcador} aria-hidden="true" />
-              {item}
-            </li>
-          ))}
-        </ul>
-      </section>
-
       <section className={pagina.secao} aria-labelledby="coleta">
         <div className={pagina.tituloSecao}>
-          <span className="numeroLegenda">08</span>
+          <span className="numeroLegenda">03</span>
           <h2 id="coleta">Coleta de dados</h2>
         </div>
         <p className="textoCorrido">{entrevistas.coleta.intro}</p>
@@ -254,7 +137,7 @@ export default function Entrevistas() {
 
       <section className={pagina.secao} aria-labelledby="roteiro">
         <div className={pagina.tituloSecao}>
-          <span className="numeroLegenda">09</span>
+          <span className="numeroLegenda">04</span>
           <h2 id="roteiro">Roteiro completo</h2>
         </div>
 
@@ -346,7 +229,7 @@ export default function Entrevistas() {
 
       <section className={pagina.secao} aria-labelledby="tcle">
         <div className={pagina.tituloSecao}>
-          <span className="numeroLegenda">10</span>
+          <span className="numeroLegenda">05</span>
           <h2 id="tcle">{entrevistas.tcle.titulo}</h2>
         </div>
         <p className={`textoCorrido ${pagina.intro}`}>{entrevistas.tcle.intro}</p>
@@ -396,6 +279,110 @@ export default function Entrevistas() {
                 {entrevistas.tcle.avisoSemArquivo}
               </p>
             )}
+          </div>
+        </div>
+      </section>
+
+      <section className={pagina.secao} aria-labelledby="analise">
+        <div className={pagina.tituloSecao}>
+          <span className="numeroLegenda">06</span>
+          <h2 id="analise">Como os dados foram analisados</h2>
+        </div>
+        <p className={`textoCorrido ${pagina.intro}`}>{entrevistas.analise.intro}</p>
+
+        <ol className={estilos.etapas}>
+          {entrevistas.analise.etapas.map((etapa, indice) => (
+            <li key={etapa.titulo} className={estilos.etapa}>
+              <span className={estilos.numeroEtapa} aria-hidden="true">
+                {indice + 1}
+              </span>
+              <div>
+                <h3 className={estilos.etapaTitulo}>{etapa.titulo}</h3>
+                <p className={estilos.etapaTexto}>{etapa.texto}</p>
+              </div>
+            </li>
+          ))}
+        </ol>
+
+        <p className={estilos.referencia}>{entrevistas.analise.referencia}</p>
+      </section>
+
+      <section className={pagina.secao} aria-labelledby="conclusoes">
+        <div className={pagina.tituloSecao}>
+          <span className="numeroLegenda">07</span>
+          <h2 id="conclusoes">{entrevistas.resultados.titulo}</h2>
+        </div>
+        <p className={estilos.abertura}>{entrevistas.resultados.intro}</p>
+      </section>
+
+      <section className={pagina.secao} aria-labelledby="temas">
+        <div className={pagina.tituloSecao}>
+          <span className="numeroLegenda">08</span>
+          <h2 id="temas">Os temas</h2>
+        </div>
+
+        <ol className={estilos.temas}>
+          {entrevistas.resultados.temas.map((tema) => (
+            <li key={tema.numero} className={estilos.tema}>
+              <h3 className={estilos.temaTitulo}>
+                <span className={estilos.temaNumero} aria-hidden="true">
+                  {String(tema.numero).padStart(2, '0')}
+                </span>
+                {tema.titulo}
+              </h3>
+
+              <p className={estilos.temaTexto}>{tema.texto}</p>
+
+              <blockquote className={estilos.temaCitacao}>
+                <Quote className={estilos.temaCitacaoIcone} size={16} aria-hidden="true" />
+                {tema.citacao}
+              </blockquote>
+
+              <p className={estilos.temaImplicacao}>
+                <span className={estilos.temaImplicacaoRotulo}>O que isso exige do design</span>
+                {tema.implicacao}
+              </p>
+            </li>
+          ))}
+        </ol>
+      </section>
+
+      <section className={pagina.secao} aria-labelledby="requisitos">
+        <div className={pagina.tituloSecao}>
+          <span className="numeroLegenda">09</span>
+          <h2 id="requisitos">Requisitos que vão para a Ideação</h2>
+        </div>
+
+        <div className={estilos.rolagem} tabIndex="0" role="region" aria-labelledby="requisitos">
+          <table className={estilos.tabela}>
+            <caption>
+              Cada requisito aponta o tema de onde saiu, para que a origem do dado continue
+              rastreável na próxima fase.
+            </caption>
+            <thead>
+              <tr>
+                <th scope="col">Requisito</th>
+                <th scope="col">Origem</th>
+              </tr>
+            </thead>
+            <tbody>
+              {entrevistas.resultados.requisitos.map((item) => (
+                <tr key={item.requisito}>
+                  <th scope="row" className={estilos.celulaRequisito}>
+                    {item.requisito}
+                  </th>
+                  <td className={estilos.celulaOrigem}>{item.origem}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        <div className={estilos.tensao}>
+          <Scale className={estilos.tensaoIcone} size={22} aria-hidden="true" />
+          <div>
+            <h3 className={estilos.tensaoTitulo}>{entrevistas.resultados.tensao.titulo}</h3>
+            <p className={estilos.tensaoTexto}>{entrevistas.resultados.tensao.texto}</p>
           </div>
         </div>
       </section>
