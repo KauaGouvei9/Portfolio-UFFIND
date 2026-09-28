@@ -12,7 +12,7 @@
 
 @media (min-width: 640px) {
   .linha {
-    grid-template-columns: minmax(0, 22ch) minmax(0, 1fr) 6ch;
+    grid-template-columns: minmax(0, 22ch) minmax(0, 1fr) 7ch;
   }
 }
 
@@ -51,6 +51,14 @@
   font-weight: 600;
   color: var(--tinta);
   text-align: right;
+}
+
+/* contagem por tras do percentual, quando a base e informada */
+.base {
+  display: block;
+  font-size: var(--t-xs);
+  font-weight: 400;
+  color: var(--tinta-media);
 }
 
 @media (prefers-reduced-motion: reduce) {

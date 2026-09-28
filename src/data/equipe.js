@@ -8,7 +8,7 @@ export const equipe = [
     github: 'https://github.com/KauaGouvei9',
     linkedin: 'https://www.linkedin.com/in/kau%C3%A3-gouveia-de-carvalho-a98aa331a',
   },
-  { nome: 'Fabricio de Freitas Rivas', curso: 'Sistema de Informação', github: '#', linkedin: '#' },
+ { nome: 'Fabricio de Freitas Rivas', curso: 'Sistema de Informação', github: '#', linkedin: '#' },
   {
     nome: 'Kauã Muller Campista',
     curso: 'Sistema de Informação',

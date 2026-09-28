@@ -1,8 +1,9 @@
-import { ClipboardList, ExternalLink, Info, TrendingDown, TrendingUp } from 'lucide-react'
+import { ClipboardList, ExternalLink, Info, Minus, TrendingDown, TrendingUp } from 'lucide-react'
 import Breadcrumb from '../../components/Breadcrumb'
 import GraficoBarras from '../../components/GraficoBarras'
+import MiroEmbed from '../../components/MiroEmbed'
 import PageNav from '../../components/PageNav'
-import { links } from '../../data/embeds'
+import { embeds, links } from '../../data/embeds'
 import { metodos } from '../../data/metodos'
 import { questionario } from '../../data/questionario'
 import pagina from '../Pagina.module.css'
@@ -75,23 +76,48 @@ export default function Questionario() {
         </section>
       ))}
 
+      <section className={pagina.secao} aria-labelledby="painel">
+        <div className={pagina.tituloSecao}>
+          <span className="numeroLegenda">09</span>
+          <h2 id="painel">Painel interativo</h2>
+        </div>
+        <p className={`textoCorrido ${pagina.intro}`}>
+          As mesmas respostas em um painel do Power BI, com filtro por curso e por vínculo.
+          Os gráficos acima seguem sendo o conteúdo desta página: o painel serve para
+          explorar os cruzamentos sem sair do portfólio.
+        </p>
+
+        <MiroEmbed src={embeds.powerBI} title="Painel do questionário no Power BI" height="620px" />
+
+        <p className={pagina.nota}>
+          <Info className={pagina.notaIcone} size={16} aria-hidden="true" />
+          Os percentuais citados no texto desta página são sempre da base completa, sem
+          filtro aplicado. Ao usar os filtros de curso ou de vínculo do painel, os números
+          mudam, porque passam a descrever apenas o grupo selecionado.
+        </p>
+      </section>
+
       <section className={pagina.secao} aria-labelledby="correlacoes">
         <div className={pagina.tituloSecao}>
-          <span className="numeroLegenda">08</span>
+          <span className="numeroLegenda">10</span>
           <h2 id="correlacoes">Correlações entre respostas</h2>
         </div>
         <p className={`textoCorrido ${pagina.intro}`}>{questionario.correlacoes.intro}</p>
 
         <ul className={estilos.achados}>
           {questionario.correlacoes.achados.map((achado) => {
-            const Icone = achado.sinal === 'positivo' ? TrendingUp : TrendingDown
+            const Icone =
+              achado.sinal === 'positivo'
+                ? TrendingUp
+                : achado.sinal === 'negativo'
+                  ? TrendingDown
+                  : Minus
             return (
               <li key={achado.titulo} className={estilos.achado}>
                 <Icone className={estilos.achadoIcone} size={22} aria-hidden="true" />
                 <div>
                   <h3 className={estilos.achadoTitulo}>{achado.titulo}</h3>
                   <p className={estilos.achadoTexto}>{achado.texto}</p>
-                  <p className={estilos.estatistica}>{achado.estatistica}</p>
                 </div>
               </li>
             )
@@ -102,16 +128,32 @@ export default function Questionario() {
           <Info className={pagina.notaIcone} size={16} aria-hidden="true" />
           {questionario.correlacoes.naoConfirmado}
         </p>
+
+        <p className={estilos.notaPlano}>{questionario.correlacoes.mudancaDePlano}</p>
       </section>
 
       <section className={pagina.secao} aria-labelledby="abertas">
         <div className={pagina.tituloSecao}>
-          <span className="numeroLegenda">09</span>
+          <span className="numeroLegenda">11</span>
           <h2 id="abertas">Temas das respostas abertas</h2>
         </div>
         <p className={`textoCorrido ${pagina.intro}`}>{questionario.abertas.intro}</p>
 
-        <GraficoBarras dados={questionario.abertas.dados} />
+        <ul className={estilos.citacoes}>
+          {questionario.abertas.citacoes.map((citacao) => (
+            <li key={citacao.texto} className={estilos.citacao}>
+              <blockquote className={estilos.citacaoTexto}>"{citacao.texto}"</blockquote>
+              <p className={estilos.citacaoLeitura}>{citacao.leitura}</p>
+            </li>
+          ))}
+        </ul>
+
+        <p className={estilos.temasIntro}>Os demais comentários pedem:</p>
+        <ul className={estilos.temas}>
+          {questionario.abertas.temas.map((tema) => (
+            <li key={tema}>{tema}</li>
+          ))}
+        </ul>
 
         <p className={pagina.nota}>
           <Info className={pagina.notaIcone} size={16} aria-hidden="true" />
@@ -121,7 +163,7 @@ export default function Questionario() {
 
       <section className={pagina.secao} aria-labelledby="requisitos">
         <div className={pagina.tituloSecao}>
-          <span className="numeroLegenda">10</span>
+          <span className="numeroLegenda">12</span>
           <h2 id="requisitos">Requisitos que saíram daqui</h2>
         </div>
 
@@ -152,7 +194,7 @@ export default function Questionario() {
 
       <section className={pagina.secao} aria-labelledby="limitacoes">
         <div className={pagina.tituloSecao}>
-          <span className="numeroLegenda">11</span>
+          <span className="numeroLegenda">13</span>
           <h2 id="limitacoes">Limitações</h2>
         </div>
         <p className="textoCorrido">{questionario.limitacoes}</p>

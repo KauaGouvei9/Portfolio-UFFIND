@@ -12,7 +12,10 @@ import estilos from './MiroEmbed.module.css'
  *
  * A altura e aplicada como custom property via ref, para nao usar style inline.
  */
-const TEMPO_LIMITE = 12000 // ms ate assumir que o embed nao vai carregar
+// ms ate avisar que o embed esta demorando. Nao derruba o iframe: painel do
+// Power BI costuma passar de 12s para pintar, e trocar um iframe que ainda ia
+// carregar por um card de erro era justamente o bug.
+const TEMPO_LIMITE = 20000
 
 // so aceita URL http(s) de verdade: assim o texto "COLE_AQUI_O_LINK..."
 // que fica em data/embeds.js ate o grupo publicar o board cai no placeholder
@@ -22,6 +25,8 @@ const ehUrlValida = (valor) => typeof valor === 'string' && /^https?:\/\//i.test
 export default function MiroEmbed({ src, title, height = '520px' }) {
   const [carregado, setCarregado] = useState(false)
   const [falhou, setFalhou] = useState(false)
+  const [demorando, setDemorando] = useState(false)
+  const [visivel, setVisivel] = useState(false)
   const wrapperRef = useRef(null)
   const placeholderRef = useRef(null)
   const configurado = ehUrlValida(src)
@@ -31,12 +36,36 @@ export default function MiroEmbed({ src, title, height = '520px' }) {
     if (alvo) alvo.style.setProperty('--altura-embed', height)
   }, [height, src, falhou])
 
-  // iframes nem sempre disparam onError; o timeout cobre o caso silencioso
+  // O iframe e lazy: quando a secao fica no fim de uma pagina longa, o
+  // navegador so comeca a baixar depois que ela entra na tela. Por isso o
+  // cronometro so pode comecar quando o embed fica visivel. Contar desde a
+  // montagem fazia o aviso disparar antes de o embed ter tentado carregar.
   useEffect(() => {
-    if (!configurado || carregado || falhou) return
-    const id = setTimeout(() => setFalhou(true), TEMPO_LIMITE)
+    const alvo = wrapperRef.current
+    if (!configurado || !alvo || visivel) return
+
+    if (typeof IntersectionObserver !== 'function') {
+      setVisivel(true)
+      return
+    }
+
+    const observador = new IntersectionObserver(
+      (entradas) => {
+        if (entradas.some((entrada) => entrada.isIntersecting)) setVisivel(true)
+      },
+      { rootMargin: '200px' },
+    )
+    observador.observe(alvo)
+    return () => observador.disconnect()
+  }, [configurado, visivel])
+
+  // iframes nem sempre disparam onError. Passado o tempo limite, oferecemos o
+  // link direto sem tirar o iframe da tela: ele ainda pode terminar de carregar.
+  useEffect(() => {
+    if (!visivel || carregado || falhou) return
+    const id = setTimeout(() => setDemorando(true), TEMPO_LIMITE)
     return () => clearTimeout(id)
-  }, [configurado, carregado, falhou])
+  }, [visivel, carregado, falhou])
 
   // src ainda nao definido (null) ou ainda com o texto placeholder
   if (!configurado) {
@@ -56,13 +85,13 @@ export default function MiroEmbed({ src, title, height = '520px' }) {
     return (
       <div ref={placeholderRef} className={estilos.placeholder} role="alert">
         <WifiOff className={estilos.icone} size={40} strokeWidth={1.5} aria-hidden="true" />
-        <p className={estilos.placeholderTitulo}>Não foi possível carregar o quadro</p>
+        <p className={estilos.placeholderTitulo}>Não foi possível carregar</p>
         <p className={estilos.placeholderTexto}>
-          O board "{title}" não pôde ser exibido aqui. Isso costuma acontecer quando o
-          navegador bloqueia conteúdo de terceiros ou o quadro não está público.
+          "{title}" não pôde ser exibido aqui. Isso costuma acontecer quando o navegador
+          bloqueia conteúdo de terceiros ou quando o conteúdo não está público.
         </p>
         <a className={estilos.linkDireto} href={src} target="_blank" rel="noreferrer">
-          Abrir o quadro em uma nova aba
+          Abrir em uma nova aba
         </a>
       </div>
     )
@@ -86,7 +115,16 @@ export default function MiroEmbed({ src, title, height = '520px' }) {
         aria-hidden={carregado}
       >
         <span className={estilos.pulso} aria-hidden="true" />
-        <p>Carregando o quadro…</p>
+        {demorando ? (
+          <>
+            <p>Está demorando mais que o normal.</p>
+            <a className={estilos.linkDireto} href={src} target="_blank" rel="noreferrer">
+              Abrir em uma nova aba
+            </a>
+          </>
+        ) : (
+          <p>Carregando…</p>
+        )}
       </div>
     </div>
   )

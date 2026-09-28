@@ -7,6 +7,13 @@ export const embeds = {
   matrizCSD: 'https://miro.com/app/live-embed/uXjVHvMwcZ4=/',
   mapaEmpatia:
     'https://miro.com/app/live-embed/uXjVHiuCm58=/?focusWidget=3458764684871963221&embedMode=view_only_without_ui&embedId=243311204958',
+
+  // Painel do Power BI com a analise do questionario.
+  // Precisa ser o link de "Publicar na web" (formato /view?r=...), que abre
+  // sem login. O link de compartilhamento (app.powerbi.com/groups/...) exige
+  // autenticacao e cairia no card de erro para quem visita o portfolio.
+  powerBI:
+    'https://app.powerbi.com/view?r=eyJrIjoiMzk1M2QwODQtMGUwMC00MTc0LTk3ZjItMzBiNThmNmIzMjA1IiwidCI6ImRhYjAxMTk3LWRlZTAtNGQ0ZC1hOTA0LTNlNWY0YjBkODFhMyJ9',
 }
 
 // Links externos que abrem em nova aba.

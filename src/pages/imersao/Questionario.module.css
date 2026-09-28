@@ -86,12 +86,74 @@
   line-height: 1.55;
 }
 
-.estatistica {
+/* nota de transparencia sobre a mudanca do plano de analise */
+.notaPlano {
+  margin-top: var(--e-2);
+  padding-top: var(--e-2);
+  border-top: 1px solid var(--linha);
+  font-size: var(--t-xs);
+  line-height: 1.55;
+  color: var(--tinta-media);
+  max-width: 76ch;
+}
+
+/* --- citacoes das respostas abertas --- */
+.citacoes {
+  display: grid;
+  gap: var(--e-2);
+  margin-bottom: var(--e-3);
+}
+
+@media (min-width: 760px) {
+  .citacoes {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.citacao {
+  padding: var(--e-2);
+  border: 1px solid var(--linha);
+  border-left: 2px solid var(--azul-uff);
+  border-radius: var(--raio);
+  background-color: var(--papel-alt);
+}
+
+.citacaoTexto {
+  font-family: var(--fonte-titulo);
+  font-size: var(--t-md);
+  font-weight: 600;
+  line-height: 1.35;
+  color: var(--tinta);
+}
+
+.citacaoLeitura {
   margin-top: var(--e-1);
   padding-top: var(--e-1);
   border-top: 1px dashed var(--linha);
-  font-size: var(--t-xs);
-  font-variant-numeric: tabular-nums;
+  font-size: var(--t-sm);
+  line-height: 1.55;
+  color: var(--tinta-media);
+}
+
+.temasIntro {
+  margin-bottom: var(--e-1);
+  font-size: var(--t-sm);
+  color: var(--tinta);
+}
+
+.temas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  list-style: none;
+}
+
+.temas li {
+  padding: 0.375rem 0.75rem;
+  border: 1px solid var(--linha);
+  border-radius: var(--raio);
+  background-color: var(--papel-alt);
+  font-size: var(--t-sm);
   color: var(--tinta);
 }
 
