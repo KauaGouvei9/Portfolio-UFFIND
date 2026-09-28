@@ -24,25 +24,44 @@ export const entrevistas = {
 
   perfil: {
     intro:
-      'O foco principal são os estudantes do IC, sobretudo os calouros, que enfrentam o problema na forma mais aguda. A pesquisa foi ampliada para professores e funcionários porque eles vivem a mesma falta de informação por outro ângulo: além de precisarem se localizar, são eles que respondem quando alguém se perde. Os perfis saíram das personas e dos contextos de uso identificados na Matriz CSD e na Análise Competitiva.',
+      'Foram sete entrevistas, divididas em dois grupos recrutados por motivos diferentes. Os estudantes foram convidados para aprofundar o que o questionário já tinha medido. Os servidores foram convidados por outra razão: eles ocupam os três pontos da cadeia da informação sobre salas, ou seja, quem produz o dado, quem o publica e quem o usa para dar aula. Entrevistar os três mostra onde a informação trava antes de chegar a quem procura, e isso nenhuma quantidade de conversas com estudantes revelaria.',
+    justificativa:
+      'A escolha também compensa um limite conhecido do questionário, que reuniu quase só estudantes de graduação e nenhum docente. As entrevistas foram atrás exatamente de quem a amostra anterior não alcançou.',
     lista: [
       {
-        nome: 'Alunos de graduação',
+        nome: 'Três estudantes do IC',
         icone: 'alunos',
         descricao:
-          'Estudantes matriculados em Ciência da Computação, Sistemas de Informação e Inteligência Artificial ou Ciência de Dados. Incluem calouros, que ainda não conhecem o prédio, e veteranos, que já criaram estratégias próprias para se localizar.',
+          'Sistemas de Informação, todos na metade do curso. Representam o perfil que dominou as respostas do questionário, e foram ouvidos para explicar o porquê por trás daqueles percentuais.',
+        porque: 'Vivem o problema todo início de período e já criaram estratégias próprias.',
       },
       {
-        nome: 'Professores',
+        nome: 'Uma estudante de outro instituto',
+        icone: 'alunos',
+        descricao:
+          'Cursa a graduação em outra unidade da UFF e frequenta o IC há pouco tempo. É a participante mais próxima do visitante que o projeto declara atender.',
+        porque: 'Usa o prédio sem pertencer a ele, que é a situação de quem chega de fora.',
+      },
+      {
+        nome: 'Um professor do Instituto',
         icone: 'professores',
         descricao:
-          'Docentes que lecionam no Instituto. Precisam localizar salas e laboratórios a cada novo período e costumam ser procurados por alunos em busca de informação.',
+          'Leciona disciplinas de Banco de Dados para mais de um curso. Precisa localizar salas a cada período e é procurado por alunos que se perderam.',
+        porque: 'Está na ponta que usa o espaço e absorve o problema de quem não achou.',
       },
       {
-        nome: 'Funcionários e servidores',
+        nome: 'Um servidor da área técnica',
         icone: 'funcionarios',
         descricao:
-          'Servidores concursados e demais funcionários das secretarias, coordenações, portaria e suporte técnico. Estão do outro lado do balcão: são a fonte informal que supre o que os sistemas não entregam.',
+          'Alimenta o site do Instituto com informação. É a pessoa que publica aquilo que os demais procuram.',
+        porque: 'Se a informação não chega ao site, o gargalo passa por ele.',
+      },
+      {
+        nome: 'Uma servidora da secretaria',
+        icone: 'funcionarios',
+        descricao:
+          'Atende no balcão e mantém a planilha de alocação das salas. É quem responde quando alguém se perde.',
+        porque: 'Detém o dado original e vê de perto quem não conseguiu encontrar sozinho.',
       },
     ],
   },
@@ -55,43 +74,52 @@ export const entrevistas = {
 
   coleta: {
     intro:
-      'Cada entrevista contará com dois integrantes do grupo: um entrevistador principal, responsável por conduzir o roteiro e manter o fluxo da conversa, e um observador, responsável por registrar anotações e percepções não verbais. Os dados serão coletados por:',
+      'Cada entrevista contou com dois integrantes do grupo: um entrevistador principal, que conduziu o roteiro e manteve o fluxo da conversa, e um observador, responsável pelas anotações e pelas percepções não verbais. Os dados foram coletados por:',
     itens: [
       'Gravação de áudio, mediante autorização prévia no TCLE.',
       'Anotações escritas em tempo real pelo observador.',
-      'Preenchimento de uma ficha de perfil antes da entrevista, com curso, semestre e tempo de contato com o IC.',
+      'Ficha de perfil preenchida antes da entrevista, com vínculo, curso ou setor e tempo de contato com o IC.',
     ],
+    nota: 'As gravações e os termos assinados ficam arquivados com o grupo, em uso restrito à disciplina. Esta página reproduz apenas trechos anonimizados.',
   },
 
   analise: {
-    intro: 'Após a coleta, os dados serão analisados qualitativamente nas etapas a seguir.',
+    nome: 'Análise temática',
+    intro:
+      'As sete transcrições foram tratadas por análise temática, seguindo as seis fases propostas por Braun e Clarke. O material foi lido na íntegra, e não por amostragem. Um tema só foi mantido quando apareceu em mais de uma entrevista.',
     etapas: [
       {
-        titulo: 'Transcrição',
+        titulo: 'Familiarização',
         texto:
-          'As gravações serão transcritas, de forma manual ou com apoio de ferramenta, gerando o material textual da análise.',
+          'Os áudios foram transcritos e lidos por inteiro antes de qualquer codificação, para formar uma visão do conjunto.',
       },
       {
         titulo: 'Codificação aberta',
         texto:
-          'Cada pesquisador lerá as transcrições e marcará trechos relevantes com rótulos livres, como "confusão com o site" e "usa colega como referência".',
+          'Cada trecho relevante recebeu um rótulo livre, como "usa colega como referência" ou "planilha desatualizada".',
       },
       {
-        titulo: 'Agrupamento temático',
+        titulo: 'Busca de temas',
         texto:
-          'Os códigos serão reunidos em categorias mais amplas, como "barreiras de acesso digital" e "estratégias informais de navegação".',
+          'Os códigos próximos foram reunidos em temas candidatos, como as estratégias informais de navegação e as barreiras de acesso digital.',
       },
       {
-        titulo: 'Análise de padrões',
+        titulo: 'Revisão',
         texto:
-          'Serão identificadas recorrências e diferenças entre participantes, incluindo contrastes entre calouros e veteranos.',
+          'Cada tema candidato foi conferido contra as sete transcrições. Os que apareciam em uma entrevista só foram descartados ou absorvidos por outro.',
       },
       {
-        titulo: 'Síntese e relato',
+        titulo: 'Definição e nomeação',
         texto:
-          'Os achados alimentarão as personas, o Mapa de Empatia e os requisitos do projeto.',
+          'Os temas mantidos receberam um nome que afirma o achado, em vez de apenas rotular o assunto.',
+      },
+      {
+        titulo: 'Relato',
+        texto:
+          'Os temas foram escritos com trechos das falas como evidência, e convertidos nos requisitos de design listados nesta página.',
       },
     ],
+    referencia: 'BRAUN, V.; CLARKE, V. Using thematic analysis in psychology, 2006.',
   },
 
   infoRoteiro: {
@@ -240,8 +268,134 @@ export const entrevistas = {
   resultados: {
     titulo: 'Conclusões',
     intro:
-      'Os achados das entrevistas, e os requisitos de design que eles geram, serão publicados nesta seção ao fim da análise.',
-    estadoVazio:
-      'As entrevistas ainda estão em andamento. Os temas, os padrões e as conclusões que vão guiar a Ideação serão publicados aqui.',
+      'Oito temas saíram da análise das sete entrevistas. Juntos, eles mudam o enunciado do problema: não falta informação sobre salas no Instituto, falta publicá-la e mantê-la sincronizada.',
+
+    // Os quatro achados que mudam a direcao do projeto. Ficam no topo da
+    // pagina de proposito: sao a resposta curta para quem nao vai ler tudo.
+    chave: [
+      {
+        titulo: 'A base de dados já existe',
+        texto:
+          'A secretaria mantém uma planilha com sala, horário, professor e capacidade. Ela não é pública.',
+      },
+      {
+        titulo: 'O problema é defasagem',
+        texto:
+          'Várias fontes coexistem e discordam entre si. Ninguém sabe qual está atualizada.',
+      },
+      {
+        titulo: 'O custo é alto e concreto',
+        texto:
+          'Uma participante perdeu a primeira semana de aula inteira por não achar a sala.',
+      },
+      {
+        titulo: 'O WhatsApp corrige o sistema oficial',
+        texto:
+          'Até quem opera os sistemas do Instituto recorre a grupos de mensagem para confirmar sala.',
+      },
+    ],
+
+    temas: [
+      {
+        numero: 1,
+        titulo: 'A informação já existe, em arquivos privados',
+        texto:
+          'A secretaria mantém uma planilha com horário, professor, sala e capacidade de cada espaço. Perguntada se o arquivo é público, a resposta foi direta: não é. O servidor da área técnica trabalha a partir de um PDF guardado no próprio computador, e o professor recebe da secretaria, por e-mail, um PDF com a relação de salas no início do semestre.',
+        citacao:
+          'Todas as informações de horário, professores, salas, quantidade de capacidade das salas.',
+        implicacao:
+          'O projeto não precisa construir a base. Precisa publicar uma base que já está pronta e atualizada.',
+      },
+      {
+        numero: 2,
+        titulo: 'O problema é defasagem, não ausência',
+        texto:
+          'Alocações de sala são feitas com pouca antecedência, em um sistema que nem todo mundo acompanha na mesma frequência. Um dos servidores já informou o número errado de uma sala por estar lendo uma planilha desatualizada, percebeu depois e corrigiu por fora. O professor descreveu o mesmo padrão nas trocas de início de período.',
+        citacao:
+          'É uma informação que pode ter algum atraso, eu consigo a informação, mas aí eu uso o WhatsApp para conseguir sincronizar com as pessoas.',
+        implicacao:
+          'Mostrar a data da última atualização e sinalizar mudanças vale mais do que reunir tudo em uma tela.',
+      },
+      {
+        numero: 3,
+        titulo: 'O WhatsApp é a camada que sincroniza o sistema oficial',
+        texto:
+          'Os sete recorrem a pessoas, e o detalhe que surpreende é quem. Um servidor com mais de duas décadas de Instituto consulta o grupo dos colegas porque a informação de lá chega antes da que ele tem em mãos. O professor mantém grupo de cada turma, e é lá que o aluno perdido pergunta.',
+        citacao: 'Geralmente eles têm uma precisão maior, são mais atualizados.',
+        implicacao:
+          'O canal informal não é falha de usuário, é infraestrutura. A solução precisa alimentá-lo, com conteúdo pronto para colar em uma conversa.',
+      },
+      {
+        numero: 4,
+        titulo: 'Quem erra paga em semanas de aula',
+        texto:
+          'Uma estudante perdeu a primeira semana inteira de aulas porque o professor não informou a sala e a informação não estava em lugar nenhum. Só descobriu na semana seguinte. Outra turma tentou Classroom, colegas e portaria, e terminou esperando o professor chegar para saber onde seria a aula.',
+        citacao: 'Acabei perdendo a primeira semana de aula inteira por causa disso.',
+        implicacao:
+          'A consulta acontece sob pressão de tempo e o erro tem custo acadêmico. Nenhuma busca pode terminar sem uma próxima ação.',
+      },
+      {
+        numero: 5,
+        titulo: 'A facilidade dos veteranos é memorização, não sistema',
+        texto:
+          'O professor afirma não ter problema algum e explica por quê: tudo que é administrativo fica no mesmo andar, e ele decorou em anos de rotina. Ele mesmo nomeia o próprio viés e observa que alguém de fora não teria esse ponto de partida.',
+        citacao: 'Não sabe nem sequer que no quarto andar são as secretarias.',
+        implicacao:
+          'O sistema não ficou fácil. Algumas pessoas construíram atalhos particulares. O projeto precisa entregar a quem chega o que hoje só o tempo de casa oferece.',
+      },
+      {
+        numero: 6,
+        titulo: 'A informação é endereçada por código, não por significado',
+        texto:
+          'A participante de fora do Instituto resumiu a barreira de entrada: o endereço da aula é dado pelo código da disciplina, e quem está chegando ainda não tem esse vocabulário. O mural físico foi descrito como grande demais e sem distinção clara entre curso e matéria.',
+        citacao:
+          'Não tem "a sala da matéria tal", é "a sala da matéria com o código".',
+        implicacao:
+          'Busca por nome de disciplina, de turma ou de professor, com o código como informação secundária.',
+      },
+      {
+        numero: 7,
+        titulo: 'Serviço administrativo é mais invisível que sala',
+        texto:
+          'Achados e perdidos apareceu espontaneamente em três das quatro entrevistas com estudantes, sem estar no roteiro. Do outro lado do balcão, a servidora da secretaria pediu exatamente o complemento disso: material explicando como funciona cada setor, para quem está ingressando. Os dois lados descreveram a mesma lacuna sem saber um do outro.',
+        citacao:
+          'Onde era a secretaria ou onde é achado e perdido, essas coisas você acaba descobrindo perguntando. Não tem essa informação em nenhum lugar.',
+        implicacao:
+          'Uma página por serviço, com o que ele resolve, onde fica, horário e contato. Achados e perdidos entra como caso de teste.',
+      },
+      {
+        numero: 8,
+        titulo: 'Não é falta de recurso, é falta de descoberta',
+        texto:
+          'Três dos quatro estudantes nunca tinham ouvido falar do site do Instituto. O único participante que o acessa com frequência é justamente quem o alimenta. Sobre o idUFF, o caso mais eloquente veio de um servidor com mais de vinte anos de casa, que não sabia que o sistema trazia informação de sala.',
+        citacao:
+          'Eu tanto não precisei, como também não sabia que pelo idUFF tinha essa disponibilidade.',
+        implicacao:
+          'Lançar mais um endereço para as pessoas decorarem tende a repetir o problema. A solução precisa aparecer onde a busca já começa.',
+      },
+    ],
+
+    requisitos: [
+      { requisito: 'Publicar a alocação que já existe, em vez de criar uma base nova', origem: 'Tema 1' },
+      { requisito: 'Data da última atualização visível e mudanças de sala sinalizadas', origem: 'Temas 2 e 4' },
+      { requisito: 'Conteúdo e link prontos para compartilhar em grupo de mensagem', origem: 'Tema 3' },
+      { requisito: 'Busca por disciplina, turma ou professor, não só por código', origem: 'Tema 6' },
+      { requisito: 'Uma página por serviço administrativo, começando pelos mais procurados', origem: 'Tema 7' },
+      { requisito: 'Guia de primeiro acesso com o que fica em cada andar', origem: 'Temas 5 e 7' },
+      { requisito: 'Orientação para chegar ao prédio, e não apenas para circular dentro dele', origem: 'Tema 5' },
+      { requisito: 'Presença nos canais que as pessoas já usam, em vez de mais um endereço', origem: 'Tema 8' },
+    ],
+
+    tensao: {
+      titulo: 'Uma divergência que vale manter à vista',
+      texto:
+        'O professor diz que não existe problema. A servidora da secretaria diz que o mais difícil é a divulgação da informação. Mesma instituição, leituras opostas. Não é contradição a resolver escolhendo um lado: a dificuldade é invisível para quem já a superou por conta própria e muito visível para quem atende quem não superou. Isso ajuda a explicar por que o problema persiste sem grande pressão por solução.',
+    },
+
+    limitacoes: [
+      'Nenhum calouro de curso do IC foi entrevistado, embora o How Might We aponte esse perfil como o mais afetado. Três dos quatro estudantes estão na metade do curso.',
+      'Nenhum visitante sem vínculo com a UFF participou. A estudante de outro instituto é a aproximação mais próxima disponível.',
+      'Em duas conversas o entrevistador saiu do roteiro e sugeriu respostas ao formular a pergunta. O material ficou mais rico, mas o viés precisa ser considerado na leitura.',
+    ],
   },
 }
