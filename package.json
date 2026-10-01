@@ -9,7 +9,8 @@
     "build": "vite build",
     "preview": "vite preview",
     "deploy": "vite build && gh-pages -d dist",
-    "tcle": "node scripts/gerar-tcle.mjs"
+    "tcle": "node scripts/gerar-tcle.mjs",
+    "declaracao": "node scripts/gerar-declaracao-ia.mjs"
   },
   "dependencies": {
     "framer-motion": "^11.3.0",

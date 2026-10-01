@@ -131,3 +131,27 @@
   font-size: var(--t-md);
   color: var(--tinta);
 }
+
+/* Declaracao de uso de IA: presente e verificavel, sem disputar atencao.
+   Fica no fim da pagina, no mesmo peso das notas de rodape do site. */
+.declaracao {
+  margin-top: var(--e-4);
+  padding-top: var(--e-2);
+  border-top: 1px solid var(--linha);
+  font-size: var(--t-xs);
+  color: var(--tinta-media);
+}
+
+.declaracaoLink {
+  display: inline-flex;
+  align-items: center;
+  min-height: 24px;
+  color: var(--azul-uff);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.declaracaoLink:hover,
+.declaracaoLink:focus-visible {
+  color: var(--marca);
+}

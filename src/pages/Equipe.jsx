@@ -3,6 +3,7 @@ import { useLocation } from 'react-router-dom'
 import { Github, Linkedin } from 'lucide-react'
 import Breadcrumb from '../components/Breadcrumb'
 import { equipe } from '../data/equipe'
+import { declaracaoIA } from '../data/declaracaoIA'
 import { projeto } from '../data/projeto'
 import pagina from './Pagina.module.css'
 import imagemMascote from '../assets/uffindinho.png'
@@ -33,6 +34,8 @@ function LinkPerfil({ href, plataforma, nome, children }) {
     </a>
   )
 }
+
+const caminhoDeclaracao = `${import.meta.env.BASE_URL}${declaracaoIA.arquivo}`
 
 export default function Equipe() {
   const localizacao = useLocation()
@@ -111,6 +114,11 @@ export default function Equipe() {
         </div>
       </section>
 
+      <p className={estilos.declaracao}>
+        <a className={estilos.declaracaoLink} href={caminhoDeclaracao} download>
+          {declaracaoIA.rotulo}
+        </a>
+      </p>
     </div>
   )
 }
