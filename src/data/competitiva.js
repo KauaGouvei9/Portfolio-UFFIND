@@ -109,7 +109,7 @@ export const competitiva = [
     tipo: 'Concorrente indireto',
     origem: 'desk',
     positivos: [
-      'É o que as pessoas realmente usam: 86,2% recorrem a colegas e 69,0% a grupos',
+      'É o que as pessoas realmente usam: 86,7% recorrem a colegas com frequência e 64,3% usam grupos de mensagem',
       'Resposta rápida e já adaptada ao contexto de quem pergunta',
       'Não exige login, instalação nem aprendizado',
     ],
@@ -179,3 +179,49 @@ export const competitiva = [
     ideiaDesign: 'A pergunta útil é "onde eu estou agora", não apenas "onde fica a sala"',
   },
 ]
+
+// Sintese: as ideias de design da tabela agrupadas em direcoes, com o lugar
+// onde cada uma entrou na Ideacao (personas, cenarios e tarefas).
+export const sintese = {
+  titulo: 'O que vai para a próxima fase',
+  rotuloSistemas: 'Vem de:',
+  intro:
+    'As ideias da última coluna da tabela se agrupam em cinco direções. Cada uma aparece nas personas, nos cenários ou nas tarefas da Ideação.',
+  direcoes: [
+    {
+      titulo: 'Publicar o dado que já existe, sem login',
+      texto:
+        'O idUFF já tem a sala de cada turma, mas exige vínculo. Mapas da UnB e da U.Porto mostram que o acesso aberto, com busca por nome do espaço, funciona.',
+      sistemas: ['idUFF', 'Mapas da UnB', 'Mapa Interativo da U.Porto'],
+      ideacao: 'Beatriz consulta sem login na tarefa 1 da sua árvore.',
+    },
+    {
+      titulo: 'Sala e serviço no mesmo lugar',
+      texto:
+        'O site do IC não centraliza nada, e o Guia USP junta serviços e localização num produto só. A busca do UFFIND cobre as duas coisas.',
+      sistemas: ['ic.uff.br', 'Guia USP'],
+      ideacao: 'Thiago procura achados e perdidos sem precisar perguntar a ninguém.',
+    },
+    {
+      titulo: 'Endereço por bloco e andar',
+      texto:
+        'Wayfinding comercial e Google Indoor Maps organizam o espaço por andar. Os iBeacons lembram que a pergunta útil é onde a pessoa está agora.',
+      sistemas: ['Wayfinding indoor comercial', 'Google Indoor Maps', 'iBeacons em shoppings', 'Google Maps no campus da UFF'],
+      ideacao: 'Beatriz vê o andar e o corredor na tarefa 3 da sua árvore.',
+    },
+    {
+      titulo: 'A rapidez do colega com a confiança da fonte oficial',
+      texto:
+        'Mural e grupos de WhatsApp são o que de fato resolve hoje. A solução entra nesse caminho com um link que dá para colar no grupo, em vez de competir com ele.',
+      sistemas: ['Mural físico e grupos de WhatsApp'],
+      ideacao: 'Thiago avisa a turma com o link da disciplina na tarefa 4 da sua árvore.',
+    },
+    {
+      titulo: 'Uma entrada para quem está chegando',
+      texto:
+        'Os sites da EAU e da Engenharia Mecânica organizam as seções por público e têm uma área para calouros.',
+      sistemas: ['Site EAU/UFF', 'Site Eng. Mecânica/UFF'],
+      ideacao: 'Sílvia quer que quem entra no primeiro semestre saiba como funciona cada setor.',
+    },
+  ],
+}

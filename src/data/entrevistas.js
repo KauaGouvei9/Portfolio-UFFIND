@@ -310,7 +310,7 @@ export const entrevistas = {
         numero: 2,
         titulo: 'O problema é defasagem, não ausência',
         texto:
-          'Alocações de sala são feitas com pouca antecedência, em um sistema que nem todo mundo acompanha na mesma frequência. Um dos servidores já informou o número errado de uma sala por estar lendo uma planilha desatualizada, percebeu depois e corrigiu por fora. O professor descreveu o mesmo padrão nas trocas de início de período.',
+          'Alocações de sala são feitas com pouca antecedência, em um sistema que nem todo mundo acompanha na mesma frequência. Um dos servidores, quando um professor perguntou pela sala, achou o número numa planilha que já tinha sido alterada. Desconfiou antes de responder e confirmou pelo WhatsApp com quem tinha feito a alocação. O professor descreveu o mesmo padrão nas trocas de início de período.',
         citacao:
           'É uma informação que pode ter algum atraso, eu consigo a informação, mas aí eu uso o WhatsApp para conseguir sincronizar com as pessoas.',
         implicacao:
@@ -320,7 +320,7 @@ export const entrevistas = {
         numero: 3,
         titulo: 'O WhatsApp é a camada que sincroniza o sistema oficial',
         texto:
-          'Os sete recorrem a pessoas, e o detalhe que surpreende é quem. O analista de TI, com vinte e dois anos de Instituto, consulta o grupo dos colegas porque a informação de lá chega antes da que ele tem em mãos. O professor mantém grupo de cada turma, e é lá que o aluno perdido pergunta.',
+          'Seis dos sete recorrem a pessoas. A exceção é a servidora da secretaria, que tem a planilha em mãos. O detalhe que surpreende é quem está entre os seis: o analista de TI, com vinte e dois anos de Instituto, consulta o grupo dos colegas porque a informação de lá chega antes da que ele tem em mãos. O professor mantém grupo de cada turma, e é lá que o aluno perdido pergunta.',
         citacao: 'Geralmente eles têm uma precisão maior, são mais atualizados.',
         implicacao:
           'O canal informal não é falha de usuário, é infraestrutura. A solução precisa alimentá-lo, com conteúdo pronto para colar em uma conversa.',

@@ -1,6 +1,6 @@
 import Breadcrumb from '../../components/Breadcrumb'
 import PageNav from '../../components/PageNav'
-import { competitiva, justificativaEscolha } from '../../data/competitiva'
+import { competitiva, justificativaEscolha, sintese } from '../../data/competitiva'
 import { metodos } from '../../data/metodos'
 import pagina from '../Pagina.module.css'
 import estilos from './AnaliseCompetitiva.module.css'
@@ -139,6 +139,27 @@ export default function AnaliseCompetitiva() {
         <p className={estilos.dicaScroll}>
           Arraste a tabela para o lado para ver todas as colunas.
         </p>
+      </section>
+
+      <section className={pagina.secao} aria-labelledby="sintese-competitiva">
+        <div className={pagina.tituloSecao}>
+          <span className="numeroLegenda">04</span>
+          <h2 id="sintese-competitiva">{sintese.titulo}</h2>
+        </div>
+        <p className={`textoCorrido ${pagina.intro}`}>{sintese.intro}</p>
+
+        <ol className={estilos.direcoes}>
+          {sintese.direcoes.map((direcao) => (
+            <li key={direcao.titulo} className={estilos.direcao}>
+              <h3 className={estilos.direcaoTitulo}>{direcao.titulo}</h3>
+              <p className={estilos.direcaoTexto}>{direcao.texto}</p>
+              <p className={estilos.direcaoSistemas}>
+                {sintese.rotuloSistemas} {direcao.sistemas.join(', ')}
+              </p>
+              <p className={estilos.direcaoIdeacao}>{direcao.ideacao}</p>
+            </li>
+          ))}
+        </ol>
       </section>
 
       <PageNav atualId="analise-competitiva" />

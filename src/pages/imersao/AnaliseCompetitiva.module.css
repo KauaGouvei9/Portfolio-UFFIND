@@ -163,3 +163,52 @@
     display: none;
   }
 }
+
+/* --- sintese: as ideias da tabela agrupadas para a Ideacao --- */
+.direcoes {
+  display: grid;
+  gap: var(--e-2);
+  margin-top: var(--e-3);
+}
+
+@media (min-width: 800px) {
+  .direcoes {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.direcao {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: var(--e-2);
+  border: 1px solid var(--linha);
+  border-left: 2px solid var(--marca);
+  border-radius: var(--raio);
+  background-color: var(--papel-alt);
+}
+
+.direcaoTitulo {
+  font-size: var(--t-md);
+  line-height: 1.3;
+}
+
+.direcaoTexto {
+  font-size: var(--t-sm);
+}
+
+/* sistemas de onde a direcao saiu, em linha discreta */
+.direcaoSistemas {
+  font-size: var(--t-xs);
+  color: var(--tinta-media);
+}
+
+/* onde a ideia entrou na Ideacao: fecha o cartao, separado por tracejado */
+.direcaoIdeacao {
+  margin-top: auto;
+  padding-top: 0.5rem;
+  border-top: 1px dashed var(--linha);
+  font-size: var(--t-sm);
+  font-weight: 600;
+  color: var(--marca);
+}
