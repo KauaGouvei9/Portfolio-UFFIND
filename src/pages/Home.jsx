@@ -4,7 +4,7 @@ import { motion } from 'framer-motion'
 import { ArrowDown, DoorOpen, Landmark, MapPin, MoveRight, Search } from 'lucide-react'
 import PhaseCard from '../components/PhaseCard'
 import { projeto } from '../data/projeto'
-import { entregasImersao } from '../data/entregas'
+import { fasesComEntregas } from '../data/entregas'
 import { equipe } from '../data/equipe'
 import imagemMascote from '../assets/uffindinho.png'
 import estilos from './Home.module.css'
@@ -127,27 +127,32 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ---------- ENTREGAS DA IMERSAO ---------- */}
-      <section className={`${estilos.secao} ${estilos.secaoAlt}`} id="imersao" aria-labelledby="titulo-entregas">
-        <div className="container">
-          <h2 id="titulo-entregas">Imersão</h2>
-          <p className={estilos.introSecao}>
-            A etapa de entender o problema, o contexto e as pessoas envolvidas. Cada
-            técnica aplicada tem uma página própria.
-          </p>
+      {/* ---------- ENTREGAS, UMA SECAO POR FASE ----------
+          O id da secao e o id da fase: o botao do hero rola ate "imersao". */}
+      {fasesComEntregas.map((fase) => (
+        <section
+          key={fase.faseId}
+          className={`${estilos.secao} ${estilos.secaoAlt}`}
+          id={fase.faseId}
+          aria-labelledby={`titulo-${fase.faseId}`}
+        >
+          <div className="container">
+            <h2 id={`titulo-${fase.faseId}`}>{fase.nome}</h2>
+            <p className={estilos.introSecao}>{fase.intro}</p>
 
-          <div className={estilos.gridEntregas}>
-            {entregasImersao.map((entrega) => (
-              <PhaseCard
-                key={entrega.id}
-                nome={entrega.nomeCompleto}
-                descricao={entrega.resumo}
-                rota={entrega.rota}
-              />
-            ))}
+            <div className={estilos.gridEntregas}>
+              {fase.entregas.map((entrega) => (
+                <PhaseCard
+                  key={entrega.id}
+                  nome={entrega.nomeCompleto}
+                  descricao={entrega.resumo}
+                  rota={entrega.rota}
+                />
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      ))}
 
       {/* ---------- EQUIPE ---------- */}
       <section className={estilos.secao} aria-labelledby="titulo-equipe">

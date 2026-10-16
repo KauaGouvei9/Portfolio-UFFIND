@@ -12,7 +12,7 @@ endobj
 << /Type /Page /Parent 2 0 R /MediaBox [0 0 595.28 841.89] /Resources 3 0 R /Contents 5 0 R >>
 endobj
 5 0 obj
-<< /Length 4356 >>
+<< /Length 4292 >>
 stream
 BT /F2 16 Tf 1 0 0 1 56 769.89 Tm (Declaração de uso de inteligência artificial) Tj ET
 1 w 0.72 0.78 0.84 RG 56 758.6899999999999 m 539.28 758.6899999999999 l S
@@ -29,63 +29,77 @@ BT /F1 10 Tf 1 0 0 1 70 558.9399999999998 Tm (As sete transcrições foram feitas 
 BT /F1 10 Tf 1 0 0 1 70 544.4399999999998 Tm (desse material, a IA apoiou o agrupamento dos códigos em temas e a redação das conclusões. Os) Tj ET
 BT /F1 10 Tf 1 0 0 1 70 529.9399999999998 Tm (temas, os requisitos de design e os trechos citados foram revisados, cortados e reescritos) Tj ET
 BT /F1 10 Tf 1 0 0 1 70 515.4399999999998 Tm (pelo grupo.) Tj ET
-BT /F2 11 Tf 1 0 0 1 56 489.9399999999998 Tm (3. Ajustes de ortografia e formatação) Tj ET
-BT /F1 10 Tf 1 0 0 1 70 471.98999999999984 Tm (Correção ortográfica e padronização de formatação dos textos escritos pelo grupo.) Tj ET
-BT /F2 11 Tf 1 0 0 1 56 446.48999999999984 Tm (4. Adaptação do painel do Power BI) Tj ET
-BT /F1 10 Tf 1 0 0 1 70 428.53999999999985 Tm (Ajuste de um layout pré-existente para refletir os dados corretos da pesquisa.) Tj ET
-BT /F2 11 Tf 1 0 0 1 56 403.03999999999985 Tm (5. Verificação do portfólio) Tj ET
-BT /F1 10 Tf 1 0 0 1 70 385.08999999999986 Tm (Conferência do conteúdo publicado contra os itens pedidos no enunciado da entrega, para) Tj ET
-BT /F1 10 Tf 1 0 0 1 70 370.58999999999986 Tm (localizar o que ainda faltava.) Tj ET
-0.6 w 0.72 0.78 0.84 RG 56 356.08999999999986 m 539.28 356.08999999999986 l S
-BT /F2 13 Tf 1 0 0 1 56 329.08999999999986 Tm (Prompts utilizados) Tj ET
-BT /F1 10 Tf 1 0 0 1 56 307.23999999999984 Tm (Os prompts abaixo são representativos de cada frente. Para cada um está registrado o que o grupo) Tj ET
-BT /F1 10 Tf 1 0 0 1 56 292.73999999999984 Tm (mudou na resposta recebida, que é onde está a autoria do trabalho.) Tj ET
-BT /F1 10 Tf 1 0 0 1 56 266.23999999999984 Tm (1. "Analise o contexto para futuras implementações.") Tj ET
-BT /F1 9 Tf 1 0 0 1 70 249.73999999999984 Tm (O que o grupo mudou depois: A leitura apontou pendências que o grupo já havia resolvido. O grupo) Tj ET
-BT /F1 9 Tf 1 0 0 1 70 236.68999999999983 Tm (corrigiu e redirecionou o trabalho para a seção de entrevistas.) Tj ET
-BT /F1 10 Tf 1 0 0 1 56 211.63999999999982 Tm (2. "Faça um checklist de onde estamos agora em relação ao enunciado, baseado só no portfólio.) Tj ET
-BT /F1 10 Tf 1 0 0 1 56 197.13999999999982 Tm (Não mexa em nada ainda, só analise.") Tj ET
-BT /F1 9 Tf 1 0 0 1 70 180.63999999999982 Tm (O que o grupo mudou depois: O grupo usou o checklist para definir a ordem do trabalho e descartou os) Tj ET
-BT /F1 9 Tf 1 0 0 1 70 167.5899999999998 Tm (pontos que considerou fora de escopo.) Tj ET
-BT /F1 10 Tf 1 0 0 1 56 142.5399999999998 Tm (3. "É possível colocar o link do Power BI no site igual aos links do Miro, para a pessoa) Tj ET
-BT /F1 10 Tf 1 0 0 1 56 128.0399999999998 Tm (visualizar sem sair do portfólio?") Tj ET
-BT /F1 9 Tf 1 0 0 1 70 111.5399999999998 Tm (O que o grupo mudou depois: O grupo forneceu o link publicado e decidiu manter os gráficos próprios do) Tj ET
-BT /F1 9 Tf 1 0 0 1 70 98.4899999999998 Tm (site como conteúdo principal, com o painel como camada extra.) Tj ET
-BT /F1 10 Tf 1 0 0 1 56 73.4399999999998 Tm (4. "Com a leitura que você fez agora, você acha que foi feito errado?") Tj ET
+BT /F2 11 Tf 1 0 0 1 56 489.9399999999998 Tm (3. Personas) Tj ET
+BT /F1 10 Tf 1 0 0 1 70 471.98999999999984 Tm (A partir das transcrições, a IA propôs a síntese de cada persona e a ligação de cada traço) Tj ET
+BT /F1 10 Tf 1 0 0 1 70 457.48999999999984 Tm (com a entrevista de origem. O grupo definiu a quantidade de personas, conferiu as falas) Tj ET
+BT /F1 10 Tf 1 0 0 1 70 442.98999999999984 Tm (contra as transcrições e revisou o texto final.) Tj ET
+BT /F2 11 Tf 1 0 0 1 56 417.48999999999984 Tm (4. Imagens das personas) Tj ET
+BT /F1 10 Tf 1 0 0 1 70 399.53999999999985 Tm (As três fotos foram geradas no Gemini, uma por vez, a partir de prompts escritos com apoio de) Tj ET
+BT /F1 10 Tf 1 0 0 1 70 385.03999999999985 Tm (IA. Nenhuma retrata participante da pesquisa. A página indica, em cada ficha, que a imagem) Tj ET
+BT /F1 10 Tf 1 0 0 1 70 370.53999999999985 Tm (foi gerada por IA.) Tj ET
+BT /F2 11 Tf 1 0 0 1 56 345.03999999999985 Tm (5. Ajustes de ortografia e formatação) Tj ET
+BT /F1 10 Tf 1 0 0 1 70 327.08999999999986 Tm (Correção ortográfica e padronização de formatação dos textos escritos pelo grupo.) Tj ET
+BT /F2 11 Tf 1 0 0 1 56 301.58999999999986 Tm (6. Adaptação do painel do Power BI) Tj ET
+BT /F1 10 Tf 1 0 0 1 70 283.6399999999999 Tm (Ajuste de um layout pré-existente para refletir os dados corretos da pesquisa.) Tj ET
+BT /F2 11 Tf 1 0 0 1 56 258.1399999999999 Tm (7. Verificação do portfólio) Tj ET
+BT /F1 10 Tf 1 0 0 1 70 240.18999999999988 Tm (Conferência do conteúdo publicado contra os itens pedidos no enunciado da entrega, para) Tj ET
+BT /F1 10 Tf 1 0 0 1 70 225.68999999999988 Tm (localizar o que ainda faltava.) Tj ET
+0.6 w 0.72 0.78 0.84 RG 56 211.18999999999988 m 539.28 211.18999999999988 l S
+BT /F2 13 Tf 1 0 0 1 56 184.18999999999988 Tm (Prompts utilizados) Tj ET
+BT /F1 10 Tf 1 0 0 1 56 162.3399999999999 Tm (Os prompts abaixo são representativos de cada frente. Para cada um está registrado o que o grupo) Tj ET
+BT /F1 10 Tf 1 0 0 1 56 147.8399999999999 Tm (mudou na resposta recebida, que é onde está a autoria do trabalho.) Tj ET
+BT /F1 10 Tf 1 0 0 1 56 121.33999999999989 Tm (1. "Analise o contexto para futuras implementações.") Tj ET
+BT /F1 9 Tf 1 0 0 1 70 104.83999999999989 Tm (O que o grupo mudou depois: A leitura apontou pendências que o grupo já havia resolvido. O grupo) Tj ET
+BT /F1 9 Tf 1 0 0 1 70 91.78999999999989 Tm (corrigiu e redirecionou o trabalho para a seção de entrevistas.) Tj ET
+BT /F1 10 Tf 1 0 0 1 56 66.7399999999999 Tm (2. "Faça um checklist de onde estamos agora em relação ao enunciado, baseado só no portfólio.) Tj ET
 endstream
 endobj
 6 0 obj
 << /Type /Page /Parent 2 0 R /MediaBox [0 0 595.28 841.89] /Resources 3 0 R /Contents 7 0 R >>
 endobj
 7 0 obj
-<< /Length 3014 >>
+<< /Length 4720 >>
 stream
-BT /F1 9 Tf 1 0 0 1 70 776.89 Tm (O que o grupo mudou depois: O grupo avaliou as ressalvas levantadas sobre a análise e escolheu quais) Tj ET
-BT /F1 9 Tf 1 0 0 1 70 763.84 Tm (incorporar no texto da página.) Tj ET
-BT /F1 10 Tf 1 0 0 1 56 738.7900000000001 Tm (5. "Vamos deixar os números exatos das respostas do questionário só na pergunta. Consegue) Tj ET
-BT /F1 10 Tf 1 0 0 1 56 724.2900000000001 Tm (retirar os números fixos?") Tj ET
-BT /F1 9 Tf 1 0 0 1 70 707.7900000000001 Tm (O que o grupo mudou depois: Decisão do grupo sobre a apresentação dos dados. O grupo pediu o ajuste duas) Tj ET
-BT /F1 9 Tf 1 0 0 1 70 694.7400000000001 Tm (vezes até chegar ao formato final.) Tj ET
-BT /F1 10 Tf 1 0 0 1 56 669.6900000000002 Tm (6. "Sobre as fórmulas estatísticas, os usuários não fazem ideia do que é isso, e isso não é) Tj ET
-BT /F1 10 Tf 1 0 0 1 56 655.1900000000002 Tm (ensinado em IHC. Retirei, pois que o texto deve ser o mais facilitador possível.") Tj ET
-BT /F1 9 Tf 1 0 0 1 70 638.6900000000002 Tm (O que o grupo mudou depois: Critério editorial definido pelo grupo e aplicado a toda a seção de) Tj ET
-BT /F1 9 Tf 1 0 0 1 70 625.6400000000002 Tm (correlações.) Tj ET
-BT /F1 10 Tf 1 0 0 1 56 600.5900000000003 Tm (7. "O painel interativo não apareceu no site. Consegue corrigir isso?") Tj ET
-BT /F1 9 Tf 1 0 0 1 70 584.0900000000003 Tm (O que o grupo mudou depois: O grupo identificou e reportou a falha a partir da navegação no site) Tj ET
-BT /F1 9 Tf 1 0 0 1 70 571.0400000000003 Tm (publicado.) Tj ET
-BT /F1 10 Tf 1 0 0 1 56 545.9900000000004 Tm (8. "Qual a melhor maneira de deixar isso mais visível no portfólio? Texto atrás de texto só faz) Tj ET
-BT /F1 10 Tf 1 0 0 1 56 531.4900000000004 Tm (o leitor perder a vontade de ler.") Tj ET
-BT /F1 9 Tf 1 0 0 1 70 514.9900000000004 Tm (O que o grupo mudou depois: Requisito de legibilidade definido pelo grupo, que resultou nos cartões de) Tj ET
-BT /F1 9 Tf 1 0 0 1 70 501.94000000000034 Tm (síntese no topo da página.) Tj ET
-BT /F1 10 Tf 1 0 0 1 56 476.8900000000003 Tm (9. "Por que a ordem foi invertida? Primeiro a pessoa tem que ler o que foi perguntado e depois o) Tj ET
-BT /F1 10 Tf 1 0 0 1 56 462.3900000000003 Tm (resultado da pesquisa.") Tj ET
-BT /F1 9 Tf 1 0 0 1 70 445.8900000000003 Tm (O que o grupo mudou depois: O grupo rejeitou a ordenação proposta e restabeleceu a sequência) Tj ET
-BT /F1 9 Tf 1 0 0 1 70 432.8400000000003 Tm (metodológica: técnica, participantes, roteiro, análise e conclusões.) Tj ET
-BT /F1 10 Tf 1 0 0 1 56 407.7900000000003 Tm (10. "Retire a seção de limitações.") Tj ET
-BT /F1 9 Tf 1 0 0 1 70 391.2900000000003 Tm (O que o grupo mudou depois: Decisão do grupo sobre o escopo do que seria publicado.) Tj ET
-BT /F1 10 Tf 1 0 0 1 56 366.2400000000003 Tm (11. "Com o checklist final, como ficamos?") Tj ET
-BT /F1 9 Tf 1 0 0 1 70 349.7400000000003 Tm (O que o grupo mudou depois: O grupo usou a conferência para fechar a entrega e definir o que ainda seria) Tj ET
-BT /F1 9 Tf 1 0 0 1 70 336.6900000000003 Tm (ajustado.) Tj ET
+BT /F1 10 Tf 1 0 0 1 56 775.89 Tm (Não mexa em nada ainda, só analise.") Tj ET
+BT /F1 9 Tf 1 0 0 1 70 759.39 Tm (O que o grupo mudou depois: O grupo usou o checklist para definir a ordem do trabalho e descartou os) Tj ET
+BT /F1 9 Tf 1 0 0 1 70 746.34 Tm (pontos que considerou fora de escopo.) Tj ET
+BT /F1 10 Tf 1 0 0 1 56 721.2900000000001 Tm (3. "É possível colocar o link do Power BI no site igual aos links do Miro, para a pessoa) Tj ET
+BT /F1 10 Tf 1 0 0 1 56 706.7900000000001 Tm (visualizar sem sair do portfólio?") Tj ET
+BT /F1 9 Tf 1 0 0 1 70 690.2900000000001 Tm (O que o grupo mudou depois: O grupo forneceu o link publicado e decidiu manter os gráficos próprios do) Tj ET
+BT /F1 9 Tf 1 0 0 1 70 677.2400000000001 Tm (site como conteúdo principal, com o painel como camada extra.) Tj ET
+BT /F1 10 Tf 1 0 0 1 56 652.1900000000002 Tm (4. "Com a leitura que você fez agora, você acha que foi feito errado?") Tj ET
+BT /F1 9 Tf 1 0 0 1 70 635.6900000000002 Tm (O que o grupo mudou depois: O grupo avaliou as ressalvas levantadas sobre a análise e escolheu quais) Tj ET
+BT /F1 9 Tf 1 0 0 1 70 622.6400000000002 Tm (incorporar no texto da página.) Tj ET
+BT /F1 10 Tf 1 0 0 1 56 597.5900000000003 Tm (5. "Vamos deixar os números exatos das respostas do questionário só na pergunta. Consegue) Tj ET
+BT /F1 10 Tf 1 0 0 1 56 583.0900000000003 Tm (retirar os números fixos?") Tj ET
+BT /F1 9 Tf 1 0 0 1 70 566.5900000000003 Tm (O que o grupo mudou depois: Decisão do grupo sobre a apresentação dos dados. O grupo pediu o ajuste duas) Tj ET
+BT /F1 9 Tf 1 0 0 1 70 553.5400000000003 Tm (vezes até chegar ao formato final.) Tj ET
+BT /F1 10 Tf 1 0 0 1 56 528.4900000000004 Tm (6. "Sobre as fórmulas estatísticas, os usuários não fazem ideia do que é isso, e isso não é) Tj ET
+BT /F1 10 Tf 1 0 0 1 56 513.9900000000004 Tm (ensinado em IHC. Retirei, pois que o texto deve ser o mais facilitador possível.") Tj ET
+BT /F1 9 Tf 1 0 0 1 70 497.49000000000035 Tm (O que o grupo mudou depois: Critério editorial definido pelo grupo e aplicado a toda a seção de) Tj ET
+BT /F1 9 Tf 1 0 0 1 70 484.44000000000034 Tm (correlações.) Tj ET
+BT /F1 10 Tf 1 0 0 1 56 459.3900000000003 Tm (7. "O painel interativo não apareceu no site. Consegue corrigir isso?") Tj ET
+BT /F1 9 Tf 1 0 0 1 70 442.8900000000003 Tm (O que o grupo mudou depois: O grupo identificou e reportou a falha a partir da navegação no site) Tj ET
+BT /F1 9 Tf 1 0 0 1 70 429.8400000000003 Tm (publicado.) Tj ET
+BT /F1 10 Tf 1 0 0 1 56 404.7900000000003 Tm (8. "Qual a melhor maneira de deixar isso mais visível no portfólio? Texto atrás de texto só faz) Tj ET
+BT /F1 10 Tf 1 0 0 1 56 390.2900000000003 Tm (o leitor perder a vontade de ler.") Tj ET
+BT /F1 9 Tf 1 0 0 1 70 373.7900000000003 Tm (O que o grupo mudou depois: Requisito de legibilidade definido pelo grupo, que resultou nos cartões de) Tj ET
+BT /F1 9 Tf 1 0 0 1 70 360.7400000000003 Tm (síntese no topo da página.) Tj ET
+BT /F1 10 Tf 1 0 0 1 56 335.6900000000003 Tm (9. "Por que a ordem foi invertida? Primeiro a pessoa tem que ler o que foi perguntado e depois o) Tj ET
+BT /F1 10 Tf 1 0 0 1 56 321.1900000000003 Tm (resultado da pesquisa.") Tj ET
+BT /F1 9 Tf 1 0 0 1 70 304.6900000000003 Tm (O que o grupo mudou depois: O grupo rejeitou a ordenação proposta e restabeleceu a sequência) Tj ET
+BT /F1 9 Tf 1 0 0 1 70 291.64000000000027 Tm (metodológica: técnica, participantes, roteiro, análise e conclusões.) Tj ET
+BT /F1 10 Tf 1 0 0 1 56 266.59000000000026 Tm (10. "Retire a seção de limitações.") Tj ET
+BT /F1 9 Tf 1 0 0 1 70 250.09000000000026 Tm (O que o grupo mudou depois: Decisão do grupo sobre o escopo do que seria publicado.) Tj ET
+BT /F1 10 Tf 1 0 0 1 56 225.04000000000025 Tm (11. "Necessita de 4 fichas? Acho que dá para reduzir para 3 só.") Tj ET
+BT /F1 9 Tf 1 0 0 1 70 208.54000000000025 Tm (O que o grupo mudou depois: O grupo reduziu as personas de quatro para três. A persona do professor) Tj ET
+BT /F1 9 Tf 1 0 0 1 70 195.49000000000024 Tm (saiu, e o que ele relatou foi distribuído entre as outras.) Tj ET
+BT /F1 10 Tf 1 0 0 1 56 170.44000000000023 Tm (12. "Me dê um prompt para gerar imagem de 3 pessoas igual Lili e Presto fizeram. Quero algo) Tj ET
+BT /F1 10 Tf 1 0 0 1 56 155.94000000000023 Tm (natural, um por vez.") Tj ET
+BT /F1 9 Tf 1 0 0 1 70 139.44000000000023 Tm (O que o grupo mudou depois: O grupo gerou as imagens no Gemini e escolheu as versões publicadas.) Tj ET
+BT /F1 10 Tf 1 0 0 1 56 114.39000000000021 Tm (13. "Com o checklist final, como ficamos?") Tj ET
+BT /F1 9 Tf 1 0 0 1 70 97.89000000000021 Tm (O que o grupo mudou depois: O grupo usou a conferência para fechar a entrega e definir o que ainda seria) Tj ET
+BT /F1 9 Tf 1 0 0 1 70 84.84000000000022 Tm (ajustado.) Tj ET
 endstream
 endobj
 xref
@@ -96,10 +110,10 @@ xref
 0000000121 00000 n 
 0000000331 00000 n 
 0000000441 00000 n 
-0000004849 00000 n 
-0000004959 00000 n 
+0000004785 00000 n 
+0000004895 00000 n 
 trailer
 << /Size 8 /Root 1 0 R >>
 startxref
-8025
+9667
 %%EOF

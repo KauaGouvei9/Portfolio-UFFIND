@@ -1,0 +1,515 @@
+/* Pagina de Personas.
+   Ordem: quem sao e por que (cartoes), como a informacao chega a cada uma
+   (trajetos, desenhados como linha de transporte), e as fichas completas. */
+
+/* ==========================================================================
+   02. Cartoes de resumo e 05. por que nao outras
+   ========================================================================== */
+.cartoes {
+  display: grid;
+  gap: var(--e-2);
+  margin-top: var(--e-3);
+}
+
+@media (min-width: 900px) {
+  .cartoes {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.cartao {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--linha);
+  border-radius: var(--raio);
+  background-color: var(--papel-alt);
+  overflow: hidden;
+}
+
+.cartaoFoto {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  object-position: center 22%;
+  border-bottom: 1px solid var(--linha);
+  background-color: var(--papel);
+}
+
+.cartaoTexto {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.375rem;
+  padding: var(--e-2);
+}
+
+.cartaoNome {
+  font-size: var(--t-lg);
+}
+
+.cartaoGrupo {
+  font-size: var(--t-sm);
+  font-weight: 600;
+  color: var(--marca);
+}
+
+.cartaoResumo {
+  font-size: var(--t-sm);
+}
+
+/* o "por que" fica abaixo de uma linha tracejada: e argumento, nao descricao */
+.cartaoPorque {
+  margin-top: 0.375rem;
+  padding-top: 0.625rem;
+  border-top: 1px dashed var(--linha);
+  font-size: var(--t-sm);
+  color: var(--tinta-media);
+}
+
+.cartaoLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  min-height: 44px;
+  margin-top: auto;
+  font-size: var(--t-sm);
+  font-weight: 600;
+  color: var(--azul-uff);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.cartaoLink:hover {
+  color: var(--tinta);
+}
+
+.fora {
+  margin-top: var(--e-2);
+  border-top: 1px solid var(--linha);
+}
+
+.foraLinha {
+  display: grid;
+  gap: 0.25rem;
+  padding-block: var(--e-2);
+  border-bottom: 1px solid var(--linha);
+}
+
+@media (min-width: 760px) {
+  .foraLinha {
+    grid-template-columns: 15rem 1fr;
+    gap: var(--e-3);
+  }
+}
+
+.foraPergunta {
+  font-family: var(--fonte-titulo);
+  font-size: var(--t-md);
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.foraResposta {
+  margin: 0;
+  font-size: var(--t-sm);
+  color: var(--tinta-media);
+  max-width: 72ch;
+}
+
+/* ==========================================================================
+   03. Trajetos: a informacao de sala como linha de transporte
+   ========================================================================== */
+.rotas {
+  display: grid;
+  gap: var(--e-3);
+  margin-top: var(--e-3);
+}
+
+.rota {
+  --cor-rota: var(--marca);
+  --marco: 3.5rem;
+
+  padding: var(--e-3);
+  border: 1px solid var(--linha);
+  border-radius: var(--raio);
+  background-color: var(--papel);
+}
+
+.rota:nth-child(2) {
+  --cor-rota: var(--azul-uff);
+}
+
+.rotaTitulo {
+  margin-bottom: var(--e-3);
+  font-size: var(--t-lg);
+}
+
+.paradas {
+  position: relative;
+  display: grid;
+  gap: var(--e-3);
+}
+
+/* a linha liga o centro do primeiro marco ao centro do ultimo */
+.paradas::before {
+  content: '';
+  position: absolute;
+  top: calc(var(--marco) / 2);
+  bottom: calc(var(--marco) / 2);
+  left: calc(var(--marco) / 2 - 2px);
+  border-left: 4px solid var(--cor-rota);
+}
+
+.parada {
+  position: relative;
+  display: grid;
+  grid-template-columns: var(--marco) 1fr;
+  column-gap: var(--e-2);
+  align-items: center;
+}
+
+.marco {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-row: span 2;
+  place-items: center;
+  width: var(--marco);
+  height: var(--marco);
+}
+
+/* parada intermediaria: um ponto na linha */
+.parada:not(.paradaPersona) .marco::before {
+  content: '';
+  width: 1.375rem;
+  height: 1.375rem;
+  border: 4px solid var(--cor-rota);
+  border-radius: 50%;
+  background-color: var(--papel-alt);
+}
+
+/* parada que e uma persona: o rosto dela no lugar do ponto */
+.marcoFoto {
+  width: var(--marco);
+  height: var(--marco);
+  border: 4px solid var(--cor-rota);
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center 18%;
+  background-color: var(--papel-alt);
+}
+
+.paradaNome {
+  align-self: end;
+  font-family: var(--fonte-titulo);
+  font-size: var(--t-md);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.paradaDetalhe {
+  align-self: start;
+  font-size: var(--t-sm);
+  color: var(--tinta-media);
+}
+
+/* no desktop a linha corre na horizontal, do meio da primeira coluna ao
+   meio da ultima, e o texto fica centralizado embaixo de cada marco */
+@media (min-width: 760px) {
+  .paradas {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+  }
+
+  .paradas::before {
+    top: calc(var(--marco) / 2 - 2px);
+    bottom: auto;
+    left: calc(100% / 6);
+    right: calc(100% / 6);
+    border-left: 0;
+    border-top: 4px solid var(--cor-rota);
+  }
+
+  .parada {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    row-gap: 0.25rem;
+    padding-inline: var(--e-2);
+    text-align: center;
+  }
+
+  .marco {
+    grid-row: auto;
+    margin-bottom: 0.375rem;
+  }
+
+  .paradaNome,
+  .paradaDetalhe {
+    align-self: auto;
+  }
+}
+
+.trava {
+  margin-top: var(--e-3);
+  padding: 0.75rem var(--e-2);
+  border-left: 2px solid var(--inspirador);
+  background-color: var(--papel-alt);
+  font-size: var(--t-sm);
+  max-width: 80ch;
+}
+
+.travaRotulo {
+  font-weight: 700;
+  color: var(--inspirador);
+}
+
+/* ==========================================================================
+   04. Fichas
+   ========================================================================== */
+.fichas {
+  display: flex;
+  flex-direction: column;
+  gap: var(--e-4);
+  margin-top: var(--e-3);
+}
+
+.ficha {
+  display: grid;
+  scroll-margin-top: calc(var(--altura-navbar) + var(--e-3));
+  border: 1px solid var(--linha);
+  border-radius: var(--raio);
+  background-color: var(--papel-alt);
+}
+
+@media (min-width: 900px) {
+  .ficha {
+    grid-template-columns: minmax(220px, 1fr) 2.6fr;
+  }
+}
+
+.ficha:focus {
+  outline: none;
+}
+
+.ficha:focus-visible {
+  outline: 2px solid var(--azul-uff);
+  outline-offset: 4px;
+}
+
+/* coluna da identidade: recebe a classe global .malha no JSX */
+.identidade {
+  padding: var(--e-3);
+  border-bottom: 1px solid var(--linha);
+  background-color: var(--papel);
+}
+
+.identidadeFixa {
+  display: flex;
+  flex-direction: column;
+  gap: var(--e-2);
+}
+
+/* no desktop foto e nome acompanham a leitura, que e longa. A coluna foi
+   enxugada para caber em uma tela de notebook sem cortar o fim. */
+@media (min-width: 900px) {
+  .identidade {
+    border-bottom: 0;
+    border-right: 1px solid var(--linha);
+  }
+
+  .identidadeFixa {
+    position: sticky;
+    top: calc(var(--altura-navbar) + var(--e-3));
+  }
+}
+
+.foto {
+  width: 100%;
+  max-width: 240px;
+  height: auto;
+  aspect-ratio: 640 / 795;
+  object-fit: cover;
+  border: 1px solid var(--linha);
+  border-radius: var(--raio);
+  background-color: var(--papel-alt);
+}
+
+.iniciais {
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background-color: var(--papel-alt);
+  font-family: var(--fonte-titulo);
+  font-weight: 700;
+  color: var(--tinta);
+}
+
+.nome {
+  font-size: var(--t-xl);
+}
+
+.papel {
+  margin-top: 0.25rem;
+  color: var(--tinta-media);
+}
+
+.dadosBasicos {
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+  font-size: var(--t-sm);
+}
+
+.dadosBasicos dt {
+  font-weight: 600;
+  color: var(--tinta-media);
+}
+
+.dadosBasicos dd {
+  margin: 0;
+}
+
+.corpo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--e-4);
+  padding: var(--e-3);
+  min-width: 0;
+}
+
+/* a fala real abre a ficha, antes de qualquer descricao */
+.citacao {
+  padding-left: var(--e-2);
+  border-left: 3px solid var(--marca);
+  font-family: var(--fonte-titulo);
+  font-size: var(--t-lg);
+  font-weight: 500;
+  line-height: 1.3;
+  max-width: 44ch;
+}
+
+.colunas {
+  display: grid;
+  gap: var(--e-4);
+}
+
+@media (min-width: 700px) {
+  .colunas {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--e-3);
+  }
+}
+
+.bloco {
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+}
+
+.tituloBloco {
+  padding-bottom: 0.375rem;
+  border-bottom: 1px solid var(--linha);
+  font-size: var(--t-base);
+  font-weight: 700;
+  color: var(--azul-uff);
+}
+
+.paragrafo {
+  font-size: var(--t-sm);
+  max-width: 72ch;
+}
+
+.paragrafo + .paragrafo {
+  margin-top: 0.25rem;
+}
+
+.lista {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  font-size: var(--t-sm);
+}
+
+.itemLista {
+  position: relative;
+  padding-left: 1rem;
+  line-height: 1.45;
+}
+
+.itemLista::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.5rem;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--marca);
+}
+
+.comportamento {
+  display: flex;
+  flex-direction: column;
+  font-size: var(--t-sm);
+}
+
+.linhaComportamento {
+  display: grid;
+  gap: 0.125rem;
+  padding-block: 0.5rem;
+  border-bottom: 1px dashed var(--linha);
+}
+
+.linhaComportamento:last-child {
+  border-bottom: 0;
+}
+
+@media (min-width: 700px) {
+  .linhaComportamento {
+    grid-template-columns: 9.5rem 1fr;
+    gap: var(--e-2);
+  }
+}
+
+.linhaComportamento dt {
+  font-weight: 600;
+}
+
+.linhaComportamento dd {
+  margin: 0;
+}
+
+/* faixa final da ficha, de ponta a ponta: o que a persona exige do design */
+.garantir {
+  grid-column: 1 / -1;
+  padding: var(--e-3);
+  border-top: 1px solid var(--linha);
+  background-color: var(--papel);
+}
+
+.garantirTitulo {
+  margin-bottom: var(--e-2);
+  font-size: var(--t-base);
+  font-weight: 700;
+  color: var(--marca);
+}
+
+.garantirLista {
+  display: grid;
+  gap: var(--e-1) var(--e-3);
+  font-size: var(--t-sm);
+}
+
+@media (min-width: 700px) {
+  .garantirLista {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.garantirItem {
+  padding: 0.375rem 0 0.375rem var(--e-2);
+  border-left: 2px solid var(--marca);
+  line-height: 1.45;
+}

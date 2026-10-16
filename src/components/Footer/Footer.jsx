@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { MapPin } from 'lucide-react'
-import { entregasImersao } from '../../data/entregas'
+import { fasesComEntregas, faseTemEntregas } from '../../data/entregas'
 import { fases } from '../../data/roadmap'
 import { instituicional, projeto } from '../../data/projeto'
 import estilos from './Footer.module.css'
@@ -34,18 +34,20 @@ export default function Footer() {
           <p className={estilos.descricao}>{projeto.tagline}</p>
         </div>
 
-        <nav aria-label="Entregas da Imersão no rodapé">
-          <h2 className={estilos.tituloColuna}>Imersão</h2>
-          <ul className={estilos.lista}>
-            {entregasImersao.map((entrega) => (
-              <li key={entrega.id}>
-                <Link className={estilos.link} to={entrega.rota}>
-                  {entrega.nomeCompleto}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </nav>
+        {fasesComEntregas.map((fase) => (
+          <nav key={fase.faseId} aria-label={`Entregas da ${fase.nome} no rodapé`}>
+            <h2 className={estilos.tituloColuna}>{fase.nome}</h2>
+            <ul className={estilos.lista}>
+              {fase.entregas.map((entrega) => (
+                <li key={entrega.id}>
+                  <Link className={estilos.link} to={entrega.rota}>
+                    {entrega.nomeCompleto}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        ))}
 
         <nav aria-label="Processo de design no rodapé">
           <h2 className={estilos.tituloColuna}>Processo</h2>
@@ -56,7 +58,7 @@ export default function Footer() {
               </Link>
             </li>
             {fases
-              .filter((fase) => fase.id !== 'imersao')
+              .filter((fase) => !faseTemEntregas(fase.id))
               .map((fase) => (
                 <li key={fase.id}>
                   <Link className={estilos.link} to={fase.rota}>

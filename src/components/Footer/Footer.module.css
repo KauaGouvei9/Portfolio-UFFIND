@@ -12,7 +12,11 @@
 
 @media (min-width: 768px) {
   .interno {
-    grid-template-columns: 1.4fr 1fr 1fr;
+    /* a marca tem coluna propria; cada fase publicada e o Processo
+       ganham uma coluna igual, sem precisar contar quantas sao */
+    grid-template-columns: 1.4fr;
+    grid-auto-flow: column;
+    grid-auto-columns: 1fr;
     gap: var(--e-5);
   }
 }

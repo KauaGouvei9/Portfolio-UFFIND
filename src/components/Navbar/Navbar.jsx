@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
 import { Link, NavLink, useLocation } from 'react-router-dom'
 import { ChevronDown, Menu, X } from 'lucide-react'
-import { entregasImersao } from '../../data/entregas'
+import { fasesComEntregas } from '../../data/entregas'
 import { projeto } from '../../data/projeto'
 import estilos from './Navbar.module.css'
 
@@ -20,11 +20,12 @@ const marcaDoSite = `${import.meta.env.BASE_URL}favicon-512x512.png`
 
 export default function Navbar() {
   const [temSombra, setTemSombra] = useState(false)
-  const [dropdownAberto, setDropdownAberto] = useState(false)
+  // id da fase cujo menu esta aberto, ou null. So um abre por vez.
+  const [faseAberta, setFaseAberta] = useState(null)
   const [drawerAberto, setDrawerAberto] = useState(false)
 
   const localizacao = useLocation()
-  const grupoDropdownRef = useRef(null)
+  const gruposDropdownRef = useRef({})
   const botaoMenuRef = useRef(null)
   const drawerRef = useRef(null)
   const botaoFecharRef = useRef(null)
@@ -40,21 +41,21 @@ export default function Navbar() {
 
   // fecha tudo ao trocar de rota
   useEffect(() => {
-    setDropdownAberto(false)
+    setFaseAberta(null)
     setDrawerAberto(false)
   }, [localizacao.pathname])
 
   // limpa o timer do dropdown ao desmontar
   useEffect(() => () => clearTimeout(timerFechar.current), [])
 
-  const abrirDropdown = () => {
+  const abrirDropdown = (faseId) => {
     clearTimeout(timerFechar.current)
-    setDropdownAberto(true)
+    setFaseAberta(faseId)
   }
 
   const fecharDropdownComAtraso = () => {
     clearTimeout(timerFechar.current)
-    timerFechar.current = setTimeout(() => setDropdownAberto(false), ATRASO_FECHAR)
+    timerFechar.current = setTimeout(() => setFaseAberta(null), ATRASO_FECHAR)
   }
 
   // Escape fecha dropdown e drawer; clique fora fecha o que estiver aberto
@@ -65,12 +66,12 @@ export default function Navbar() {
         setDrawerAberto(false)
         botaoMenuRef.current?.focus()
       }
-      if (dropdownAberto) setDropdownAberto(false)
+      if (faseAberta) setFaseAberta(null)
     }
 
     const aoClicarFora = (evento) => {
-      if (dropdownAberto && !grupoDropdownRef.current?.contains(evento.target)) {
-        setDropdownAberto(false)
+      if (faseAberta && !gruposDropdownRef.current[faseAberta]?.contains(evento.target)) {
+        setFaseAberta(null)
       }
       if (
         drawerAberto &&
@@ -87,7 +88,7 @@ export default function Navbar() {
       document.removeEventListener('keydown', aoTeclar)
       document.removeEventListener('mousedown', aoClicarFora)
     }
-  }, [dropdownAberto, drawerAberto])
+  }, [faseAberta, drawerAberto])
 
   // drawer aberto: foco vai para dentro, o fundo para de rolar e o Tab
   // circula apenas entre os elementos do drawer (focus trap)
@@ -127,8 +128,6 @@ export default function Navbar() {
       document.body.style.paddingRight = paddingAnterior
     }
   }, [drawerAberto])
-
-  const naImersao = localizacao.pathname.startsWith('/imersao')
 
   const fecharDrawer = () => {
     setDrawerAberto(false)
@@ -172,19 +171,23 @@ export default function Navbar() {
             Início
           </NavLink>
 
-          <p className={estilos.drawerSecao}>Imersão</p>
-          {entregasImersao.map((entrega) => (
-            <NavLink
-              key={entrega.id}
-              to={entrega.rota}
-              className={({ isActive }) =>
-                `${estilos.drawerLink} ${estilos.drawerSub} ${
-                  isActive ? estilos.drawerLinkAtivo : ''
-                }`
-              }
-            >
-              {entrega.nomeCompleto}
-            </NavLink>
+          {fasesComEntregas.map((fase) => (
+            <div key={fase.faseId}>
+              <p className={estilos.drawerSecao}>{fase.nome}</p>
+              {fase.entregas.map((entrega) => (
+                <NavLink
+                  key={entrega.id}
+                  to={entrega.rota}
+                  className={({ isActive }) =>
+                    `${estilos.drawerLink} ${estilos.drawerSub} ${
+                      isActive ? estilos.drawerLinkAtivo : ''
+                    }`
+                  }
+                >
+                  {entrega.nomeCompleto}
+                </NavLink>
+              ))}
+            </div>
           ))}
 
           {LINKS_PRINCIPAIS.filter((item) => item.rota !== '/').map((item) => (
@@ -227,44 +230,54 @@ export default function Navbar() {
             Início
           </NavLink>
 
-          <div
-            className={estilos.grupoDropdown}
-            ref={grupoDropdownRef}
-            onMouseEnter={abrirDropdown}
-            onMouseLeave={fecharDropdownComAtraso}
-          >
-            <button
-              type="button"
-              className={`${estilos.link} ${naImersao ? estilos.ativo : ''}`}
-              aria-expanded={dropdownAberto}
-              aria-haspopup="true"
-              onClick={() => setDropdownAberto((aberto) => !aberto)}
-            >
-              Imersão
-              <ChevronDown
-                className={`${estilos.chevron} ${dropdownAberto ? estilos.chevronAberto : ''}`}
-                size={15}
-                aria-hidden="true"
-              />
-            </button>
+          {fasesComEntregas.map((fase) => {
+            const aberto = faseAberta === fase.faseId
+            const naFase = localizacao.pathname.startsWith(`/${fase.faseId}/`)
 
-            {dropdownAberto && (
-              <div className={estilos.dropdown} role="menu" aria-label="Entregas da Imersão">
-                {entregasImersao.map((entrega) => (
-                  <NavLink
-                    key={entrega.id}
-                    to={entrega.rota}
-                    role="menuitem"
-                    className={({ isActive }) =>
-                      `${estilos.itemDropdown} ${isActive ? estilos.itemAtivo : ''}`
-                    }
-                  >
-                    {entrega.nomeCompleto}
-                  </NavLink>
-                ))}
+            return (
+              <div
+                key={fase.faseId}
+                className={estilos.grupoDropdown}
+                ref={(elemento) => {
+                  gruposDropdownRef.current[fase.faseId] = elemento
+                }}
+                onMouseEnter={() => abrirDropdown(fase.faseId)}
+                onMouseLeave={fecharDropdownComAtraso}
+              >
+                <button
+                  type="button"
+                  className={`${estilos.link} ${naFase ? estilos.ativo : ''}`}
+                  aria-expanded={aberto}
+                  aria-haspopup="true"
+                  onClick={() => setFaseAberta(aberto ? null : fase.faseId)}
+                >
+                  {fase.nome}
+                  <ChevronDown
+                    className={`${estilos.chevron} ${aberto ? estilos.chevronAberto : ''}`}
+                    size={15}
+                    aria-hidden="true"
+                  />
+                </button>
+
+                {aberto && (
+                  <div className={estilos.dropdown} role="menu" aria-label={`Entregas da ${fase.nome}`}>
+                    {fase.entregas.map((entrega) => (
+                      <NavLink
+                        key={entrega.id}
+                        to={entrega.rota}
+                        role="menuitem"
+                        className={({ isActive }) =>
+                          `${estilos.itemDropdown} ${isActive ? estilos.itemAtivo : ''}`
+                        }
+                      >
+                        {entrega.nomeCompleto}
+                      </NavLink>
+                    ))}
+                  </div>
+                )}
               </div>
-            )}
-          </div>
+            )
+          })}
 
           {LINKS_PRINCIPAIS.filter((item) => item.rota !== '/').map((item) => (
             <NavLink

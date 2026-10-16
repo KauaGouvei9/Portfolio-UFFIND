@@ -15,6 +15,8 @@ import AnaliseCompetitiva from './pages/imersao/AnaliseCompetitiva'
 import MapaEmpatia from './pages/imersao/MapaEmpatia'
 import Entrevistas from './pages/imersao/Entrevistas'
 import Questionario from './pages/imersao/Questionario'
+import Personas from './pages/ideacao/Personas'
+import { fasesComEntregas } from './data/entregas'
 
 import estilos from './App.module.css'
 
@@ -25,6 +27,14 @@ const transicaoRota = {
   inicial: { opacity: 0 },
   animada: { opacity: 1, transition: { duration: 0.24, ease: [0.2, 0, 0.2, 1] } },
   saida: { opacity: 1, transition: { duration: 0 } },
+}
+
+// Fase com entregas publicadas abre direto na primeira delas. Fase sem
+// entregas continua na pagina de etapa futura.
+function PaginaDeFase({ faseId }) {
+  const fase = fasesComEntregas.find((item) => item.faseId === faseId)
+  if (fase) return <Navigate to={fase.entregas[0].rota} replace />
+  return <ComingSoon faseId={faseId} />
 }
 
 function TopoAoTrocarRota() {
@@ -76,9 +86,11 @@ export default function App() {
                 <Route path="/imersao/entrevistas" element={<Entrevistas />} />
                 <Route path="/imersao/questionario" element={<Questionario />} />
 
-                <Route path="/ideacao" element={<ComingSoon faseId="ideacao" />} />
-                <Route path="/prototipacao" element={<ComingSoon faseId="prototipacao" />} />
-                <Route path="/avaliacao" element={<ComingSoon faseId="avaliacao" />} />
+                <Route path="/ideacao/personas" element={<Personas />} />
+
+                <Route path="/ideacao" element={<PaginaDeFase faseId="ideacao" />} />
+                <Route path="/prototipacao" element={<PaginaDeFase faseId="prototipacao" />} />
+                <Route path="/avaliacao" element={<PaginaDeFase faseId="avaliacao" />} />
 
                 {/* qualquer rota desconhecida volta para a Home */}
                 <Route path="*" element={<Navigate to="/" replace />} />

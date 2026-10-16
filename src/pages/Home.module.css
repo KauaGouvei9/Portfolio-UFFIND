@@ -271,3 +271,8 @@
   color: var(--marca);
   border-bottom-color: currentColor;
 }
+
+/* duas fases seguidas dividem uma hairline so, e nao duas */
+.secaoAlt + .secaoAlt {
+  border-top: 0;
+}

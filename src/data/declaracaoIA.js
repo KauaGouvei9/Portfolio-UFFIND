@@ -21,6 +21,16 @@ export const declaracaoIA = {
         'As sete transcrições foram feitas à mão pelo grupo, em mais de um dia de trabalho. A partir desse material, a IA apoiou o agrupamento dos códigos em temas e a redação das conclusões. Os temas, os requisitos de design e os trechos citados foram revisados, cortados e reescritos pelo grupo.',
     },
     {
+      titulo: 'Personas',
+      texto:
+        'A partir das transcrições, a IA propôs a síntese de cada persona e a ligação de cada traço com a entrevista de origem. O grupo definiu a quantidade de personas, conferiu as falas contra as transcrições e revisou o texto final.',
+    },
+    {
+      titulo: 'Imagens das personas',
+      texto:
+        'As três fotos foram geradas no Gemini, uma por vez, a partir de prompts escritos com apoio de IA. Nenhuma retrata participante da pesquisa. A página indica, em cada ficha, que a imagem foi gerada por IA.',
+    },
+    {
       titulo: 'Ajustes de ortografia e formatação',
       texto:
         'Correção ortográfica e padronização de formatação dos textos escritos pelo grupo.',
@@ -94,6 +104,18 @@ export const declaracaoIA = {
     {
       prompt: 'Retire a seção de limitações.',
       depois: 'Decisão do grupo sobre o escopo do que seria publicado.',
+    },
+    {
+      prompt:
+        'Necessita de 4 fichas? Acho que dá para reduzir para 3 só.',
+      depois:
+        'O grupo reduziu as personas de quatro para três. A persona do professor saiu, e o que ele relatou foi distribuído entre as outras.',
+    },
+    {
+      prompt:
+        'Me dê um prompt para gerar imagem de 3 pessoas igual Lili e Presto fizeram. Quero algo natural, um por vez.',
+      depois:
+        'O grupo gerou as imagens no Gemini e escolheu as versões publicadas.',
     },
     {
       prompt: 'Com o checklist final, como ficamos?',
