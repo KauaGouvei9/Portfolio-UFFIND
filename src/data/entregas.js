@@ -73,6 +73,20 @@ export const entregasPorFase = [
         rota: '/ideacao/personas',
         resumo: 'Três personas, uma por grupo do público, e o dado que sustenta cada uma.',
       },
+      {
+        id: 'cenarios',
+        nome: 'Cenários',
+        nomeCompleto: 'Cenários-problema',
+        rota: '/ideacao/cenarios',
+        resumo: 'Uma história por persona, com o problema acontecendo no dia a dia do Instituto.',
+      },
+      {
+        id: 'tarefas',
+        nome: 'Tarefas',
+        nomeCompleto: 'Modelo de Tarefas',
+        rota: '/ideacao/tarefas',
+        resumo: 'O que cada persona precisa fazer com o UFFIND, em árvores hierárquicas.',
+      },
     ],
   },
 ]

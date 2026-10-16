@@ -1,0 +1,173 @@
+/* Cenarios-problema: a narrativa e o centro de cada cenario. A analise
+   (problema, impacto, o que garantir) fica ao lado, e as perguntas que o
+   cenario levanta fecham o cartao em uma faixa de ponta a ponta, no mesmo
+   padrao da faixa final das fichas de persona. */
+
+.lista3 {
+  display: flex;
+  flex-direction: column;
+  gap: var(--e-4);
+  margin-top: var(--e-3);
+}
+
+.cenario {
+  border: 1px solid var(--linha);
+  border-radius: var(--raio);
+  background-color: var(--papel-alt);
+}
+
+.cabecalho {
+  display: flex;
+  align-items: center;
+  gap: var(--e-2);
+  padding: var(--e-3) var(--e-3) var(--e-2);
+  border-bottom: 1px solid var(--linha);
+}
+
+.rosto {
+  flex-shrink: 0;
+  width: 3.5rem;
+  height: 3.5rem;
+  border: 3px solid var(--marca);
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center 18%;
+  background-color: var(--papel);
+}
+
+.ator {
+  font-size: var(--t-sm);
+  color: var(--tinta-media);
+}
+
+.linkPersona {
+  font-weight: 600;
+  color: var(--azul-uff);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.linkPersona:hover {
+  color: var(--tinta);
+}
+
+.titulo {
+  margin-top: 0.125rem;
+  font-size: var(--t-xl);
+}
+
+.corpo {
+  display: grid;
+  gap: var(--e-3);
+  padding: var(--e-3);
+}
+
+@media (min-width: 900px) {
+  .corpo {
+    grid-template-columns: 1.6fr 1fr;
+    gap: var(--e-4);
+  }
+}
+
+/* a historia em corpo maior: e para ser lida, nao escaneada */
+.narrativa {
+  display: flex;
+  flex-direction: column;
+  gap: var(--e-2);
+  font-size: var(--t-md);
+  line-height: 1.65;
+  max-width: 62ch;
+}
+
+.analise {
+  display: flex;
+  flex-direction: column;
+  gap: var(--e-2);
+  align-self: start;
+}
+
+.item {
+  padding-left: var(--e-2);
+  border-left: 2px solid var(--inspirador);
+}
+
+.item:last-child {
+  border-left-color: var(--marca);
+}
+
+.item dt {
+  font-weight: 700;
+  color: var(--inspirador);
+}
+
+.item:last-child dt {
+  color: var(--marca);
+}
+
+.item dd {
+  margin: 0.25rem 0 0;
+  font-size: var(--t-sm);
+}
+
+.lista {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+}
+
+.lista li {
+  position: relative;
+  padding-left: 1rem;
+  line-height: 1.45;
+}
+
+.lista li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.5rem;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--marca);
+}
+
+.perguntas {
+  padding: var(--e-3);
+  border-top: 1px solid var(--linha);
+  background-color: var(--papel);
+}
+
+.perguntasTitulo {
+  margin-bottom: var(--e-2);
+  font-size: var(--t-base);
+  font-weight: 700;
+  color: var(--azul-uff);
+}
+
+.listaPerguntas {
+  display: grid;
+  gap: var(--e-1) var(--e-3);
+  font-size: var(--t-sm);
+}
+
+@media (min-width: 900px) {
+  .listaPerguntas {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* mesmo marcador "?" das perguntas do Mapa de Empatia */
+.pergunta {
+  position: relative;
+  padding-left: 1.125rem;
+  line-height: 1.45;
+}
+
+.pergunta::before {
+  content: '?';
+  position: absolute;
+  left: 0;
+  font-weight: 700;
+  color: var(--azul-uff);
+}

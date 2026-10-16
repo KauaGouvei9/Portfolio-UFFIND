@@ -1,0 +1,254 @@
+/* Modelo de tarefas (HTA). A arvore e uma lista aninhada no HTML.
+   No celular ela fica recuada, como um sumario; a partir de 960px vira o
+   diagrama classico de HTA, com o objetivo no topo e as subtarefas lado a
+   lado, ligadas por linhas. O texto fica em tamanho de leitura, ao contrario
+   do embed do Miro, que exige zoom. */
+
+.lista {
+  display: flex;
+  flex-direction: column;
+  gap: var(--e-4);
+  margin-top: var(--e-3);
+}
+
+.hta {
+  --conector: var(--tinta-media);
+  --traco: 2px;
+
+  border: 1px solid var(--linha);
+  border-radius: var(--raio);
+  background-color: var(--papel-alt);
+}
+
+.cabecalho {
+  display: flex;
+  align-items: center;
+  gap: var(--e-2);
+  padding: var(--e-3) var(--e-3) var(--e-2);
+  border-bottom: 1px solid var(--linha);
+}
+
+.rosto {
+  flex-shrink: 0;
+  width: 3.5rem;
+  height: 3.5rem;
+  border: 3px solid var(--marca);
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center 18%;
+  background-color: var(--papel);
+}
+
+.nome {
+  font-size: var(--t-xl);
+}
+
+.cenario {
+  margin-top: 0.125rem;
+  font-size: var(--t-sm);
+  color: var(--tinta-media);
+}
+
+.linkCenario {
+  font-weight: 600;
+  color: var(--azul-uff);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.linkCenario:hover {
+  color: var(--tinta);
+}
+
+/* area do diagrama: recebe a classe global .malha no JSX */
+.area {
+  padding: var(--e-3);
+  background-color: var(--papel);
+}
+
+.numero {
+  flex-shrink: 0;
+  min-width: 1.75rem;
+  font-weight: 700;
+  color: var(--marca);
+}
+
+/* --- caixas --- */
+.raiz,
+.caixa,
+.neto {
+  display: flex;
+  gap: 0.375rem;
+  border: 1px solid var(--linha);
+  border-radius: var(--raio);
+  line-height: 1.35;
+}
+
+.raiz {
+  padding: 0.75rem var(--e-2);
+  border: 2px solid var(--tinta);
+  background-color: var(--papel-alt);
+  font-family: var(--fonte-titulo);
+  font-size: var(--t-md);
+  font-weight: 700;
+}
+
+.caixa {
+  padding: 0.625rem 0.75rem;
+  border-top: 3px solid var(--marca);
+  background-color: var(--papel-alt);
+  font-size: var(--t-sm);
+  font-weight: 600;
+}
+
+.neto {
+  padding: 0.5rem 0.625rem;
+  background-color: var(--papel-alt);
+  font-size: var(--t-sm);
+}
+
+.neto .numero {
+  min-width: 2rem;
+  font-weight: 600;
+}
+
+/* --- ligacoes, celular: recuo com linha vertical e tracinho --- */
+.filhos,
+.netos {
+  display: flex;
+  flex-direction: column;
+  gap: var(--e-1);
+  margin-left: var(--e-2);
+  padding-top: var(--e-1);
+  padding-left: var(--e-2);
+}
+
+.filho,
+.neto {
+  position: relative;
+}
+
+/* cada item desenha o seu pedaco da linha vertical, e o ultimo para no
+   proprio tracinho, para a linha nao passar do ultimo passo */
+.filho::after,
+.neto::after {
+  content: '';
+  position: absolute;
+  top: calc(-1 * var(--e-1));
+  bottom: 0;
+  left: calc(-1 * var(--e-2));
+  border-left: var(--traco) solid var(--conector);
+}
+
+.filho:last-child::after,
+.neto:last-child::after {
+  bottom: auto;
+  height: calc(1.25rem + var(--e-1));
+}
+
+.filho::before,
+.neto::before {
+  content: '';
+  position: absolute;
+  top: 1.25rem;
+  left: calc(-1 * var(--e-2));
+  width: var(--e-2);
+  border-top: var(--traco) solid var(--conector);
+}
+
+.netos {
+  margin-top: 0;
+}
+
+/* --- ligacoes, desktop: diagrama de HTA --- */
+@media (min-width: 960px) {
+  .raiz {
+    position: relative;
+    width: fit-content;
+    max-width: 26rem;
+    margin-inline: auto;
+  }
+
+  /* linha que desce do objetivo ate a barra das subtarefas */
+  .raiz::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    height: var(--e-3);
+    border-left: var(--traco) solid var(--conector);
+  }
+
+  .filhos {
+    display: grid;
+    grid-auto-columns: 1fr;
+    grid-auto-flow: column;
+    gap: 0;
+    margin: var(--e-3) 0 0;
+    padding: 0;
+  }
+
+  .filho {
+    padding: var(--e-3) 0.375rem 0;
+  }
+
+  /* barra horizontal: cada coluna desenha o seu pedaco, a primeira e a
+     ultima comecam e terminam no meio, para a barra ir de centro a centro */
+  .filho::before {
+    top: 0;
+    left: 0;
+    right: 0;
+    width: auto;
+  }
+
+  .filho:first-child::before {
+    left: 50%;
+  }
+
+  .filho:last-child::before {
+    right: 50%;
+  }
+
+  /* tracinho vertical da barra ate a caixa */
+  .filho::after,
+  .filho:last-child::after {
+    top: 0;
+    bottom: auto;
+    left: 50%;
+    height: var(--e-3);
+  }
+
+  .caixa {
+    min-height: 3.5rem;
+  }
+
+  .netos {
+    margin-left: var(--e-1);
+  }
+}
+
+/* --- planos --- */
+.planos {
+  padding: var(--e-3);
+  border-top: 1px solid var(--linha);
+}
+
+.planosTitulo {
+  margin-bottom: var(--e-2);
+  font-size: var(--t-base);
+  font-weight: 700;
+  color: var(--azul-uff);
+}
+
+.listaPlanos {
+  display: flex;
+  flex-direction: column;
+  gap: var(--e-1);
+  font-size: var(--t-sm);
+}
+
+.plano {
+  padding-left: var(--e-2);
+  border-left: 2px solid var(--marca);
+  max-width: 80ch;
+}

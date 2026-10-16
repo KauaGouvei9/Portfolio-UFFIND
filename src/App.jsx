@@ -16,6 +16,8 @@ import MapaEmpatia from './pages/imersao/MapaEmpatia'
 import Entrevistas from './pages/imersao/Entrevistas'
 import Questionario from './pages/imersao/Questionario'
 import Personas from './pages/ideacao/Personas'
+import Cenarios from './pages/ideacao/Cenarios'
+import Tarefas from './pages/ideacao/Tarefas'
 import { fasesComEntregas } from './data/entregas'
 
 import estilos from './App.module.css'
@@ -87,6 +89,8 @@ export default function App() {
                 <Route path="/imersao/questionario" element={<Questionario />} />
 
                 <Route path="/ideacao/personas" element={<Personas />} />
+                <Route path="/ideacao/cenarios" element={<Cenarios />} />
+                <Route path="/ideacao/tarefas" element={<Tarefas />} />
 
                 <Route path="/ideacao" element={<PaginaDeFase faseId="ideacao" />} />
                 <Route path="/prototipacao" element={<PaginaDeFase faseId="prototipacao" />} />
