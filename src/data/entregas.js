@@ -87,6 +87,13 @@ export const entregasPorFase = [
         rota: '/ideacao/tarefas',
         resumo: 'O que cada persona precisa fazer com o UFFIND, em árvores hierárquicas.',
       },
+      {
+        id: 'crazy4',
+        nome: 'Crazy 4',
+        nomeCompleto: 'Crazy 4',
+        rota: '/ideacao/crazy-4',
+        resumo: 'Três folhas de ideias e o que cada uma trouxe para o protótipo.',
+      },
     ],
   },
 ]

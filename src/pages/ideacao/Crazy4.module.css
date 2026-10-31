@@ -1,0 +1,213 @@
+/* Crazy 4: as folhas reais primeiro, depois a convergencia. A transcricao
+   repete a grade 2 x 2 do papel, para o leitor achar cada quadrante na foto. */
+
+/* --- folhas --- */
+.folhas {
+  display: flex;
+  flex-direction: column;
+  gap: var(--e-4);
+  margin-top: var(--e-3);
+}
+
+.folha {
+  padding: var(--e-3);
+  border: 1px solid var(--linha);
+  border-radius: var(--raio);
+  background-color: var(--papel-alt);
+}
+
+.autor {
+  margin-bottom: var(--e-2);
+  font-size: var(--t-lg);
+}
+
+.folhaCorpo {
+  display: grid;
+  gap: var(--e-3);
+}
+
+@media (min-width: 900px) {
+  .folhaCorpo {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+    align-items: start;
+  }
+}
+
+.figura {
+  margin: 0;
+}
+
+.linkFoto {
+  position: relative;
+  display: block;
+  border: 1px solid var(--linha);
+  border-radius: var(--raio);
+  background-color: var(--papel);
+}
+
+.linkFoto:focus-visible {
+  outline: 2px solid var(--azul-uff);
+  outline-offset: 3px;
+}
+
+.foto {
+  width: 100%;
+  height: auto;
+  max-height: 32rem;
+  object-fit: contain;
+  border-radius: var(--raio);
+}
+
+/* indica que a foto abre em tamanho real */
+.ampliar {
+  position: absolute;
+  right: 0.5rem;
+  bottom: 0.5rem;
+  display: grid;
+  place-items: center;
+  width: 2rem;
+  height: 2rem;
+  border: 1px solid var(--linha);
+  border-radius: var(--raio);
+  background-color: var(--papel-alt);
+  color: var(--tinta);
+}
+
+.quadrantes {
+  display: grid;
+  grid-template-columns: 1fr;
+  border-top: 1px solid var(--linha);
+  border-left: 1px solid var(--linha);
+}
+
+@media (min-width: 560px) {
+  .quadrantes {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.quadrante {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+  padding: var(--e-2);
+  border-right: 1px solid var(--linha);
+  border-bottom: 1px solid var(--linha);
+  background-color: var(--papel);
+}
+
+.tipo {
+  font-size: var(--t-sm);
+  font-weight: 700;
+  color: var(--marca);
+}
+
+.ideia {
+  font-size: var(--t-sm);
+  line-height: 1.5;
+}
+
+/* --- convergencia --- */
+.direcoes {
+  display: flex;
+  flex-direction: column;
+  gap: var(--e-2);
+  margin-top: var(--e-3);
+}
+
+.direcao {
+  display: grid;
+  gap: var(--e-2);
+  padding: var(--e-3);
+  border: 1px solid var(--linha);
+  border-radius: var(--raio);
+  background-color: var(--papel-alt);
+}
+
+@media (min-width: 900px) {
+  .direcao {
+    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1.3fr);
+    align-items: center;
+    gap: var(--e-3);
+  }
+}
+
+.direcaoTitulo {
+  margin-bottom: 0.5rem;
+  font-size: var(--t-md);
+}
+
+.ideias {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+  font-size: var(--t-sm);
+}
+
+.ideiaItem {
+  position: relative;
+  padding-left: 1rem;
+  line-height: 1.45;
+}
+
+.ideiaItem::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.5rem;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--tinta-media);
+}
+
+.ideiaAutor {
+  font-size: var(--t-xs);
+  color: var(--tinta-media);
+}
+
+.seta {
+  color: var(--marca);
+  transform: rotate(90deg);
+  justify-self: center;
+}
+
+@media (min-width: 900px) {
+  .seta {
+    transform: none;
+  }
+}
+
+.destino {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: var(--e-2);
+  border-left: 3px solid var(--marca);
+  background-color: var(--papel);
+}
+
+.destinoRotulo {
+  font-size: var(--t-sm);
+  font-weight: 700;
+  color: var(--marca);
+}
+
+.destinoTexto {
+  margin: 0.125rem 0 0;
+  font-family: var(--fonte-titulo);
+  font-size: var(--t-md);
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+.porqueRotulo {
+  font-size: var(--t-sm);
+  font-weight: 700;
+  color: var(--tinta-media);
+}
+
+.porqueTexto {
+  margin: 0.125rem 0 0;
+  font-size: var(--t-sm);
+}

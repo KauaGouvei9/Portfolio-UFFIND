@@ -76,7 +76,7 @@
 /* --- caixas --- */
 .raiz,
 .caixa,
-.neto {
+.passo {
   display: flex;
   gap: 0.375rem;
   border: 1px solid var(--linha);
@@ -101,15 +101,26 @@
   font-weight: 600;
 }
 
-.neto {
+.passo {
   padding: 0.5rem 0.625rem;
   background-color: var(--papel-alt);
   font-size: var(--t-sm);
 }
 
-.neto .numero {
+.passo .numero {
   min-width: 2rem;
   font-weight: 600;
+}
+
+/* terceiro nivel: a acao. Caixa mais leve, para a hierarquia se ler de longe */
+.netos .netos .passo {
+  border-style: dashed;
+  background-color: var(--papel);
+}
+
+.netos .netos .numero {
+  min-width: 2.75rem;
+  color: var(--tinta-media);
 }
 
 /* --- ligacoes, celular: recuo com linha vertical e tracinho --- */
@@ -158,6 +169,10 @@
 
 .netos {
   margin-top: 0;
+}
+
+.neto > .netos {
+  padding-top: var(--e-1);
 }
 
 /* --- ligacoes, desktop: diagrama de HTA --- */
@@ -250,5 +265,100 @@
 .plano {
   padding-left: var(--e-2);
   border-left: 2px solid var(--marca);
+  max-width: 80ch;
+}
+
+/* --- experiente e inexperiente (KLM) --- */
+.opcoes {
+  display: grid;
+  gap: var(--e-3);
+  margin-top: var(--e-3);
+  align-items: start;
+}
+
+@media (min-width: 960px) {
+  .opcoes {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.opcao {
+  border: 1px solid var(--linha);
+  border-radius: var(--raio);
+  background-color: var(--papel-alt);
+}
+
+.opcaoCabecalho {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: var(--e-2);
+  border-bottom: 1px solid var(--linha);
+}
+
+.rostoPequeno {
+  flex-shrink: 0;
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 2px solid var(--marca);
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center 18%;
+}
+
+.opcaoTitulo {
+  font-size: var(--t-md);
+}
+
+.rolagem {
+  overflow-x: auto;
+}
+
+.klm {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--t-sm);
+}
+
+.klm th,
+.klm td {
+  padding: 0.5rem 0.75rem;
+  border-bottom: 1px solid var(--linha);
+  text-align: left;
+  vertical-align: top;
+}
+
+.klm thead th {
+  font-weight: 700;
+  color: var(--azul-uff);
+}
+
+.klm tfoot th,
+.klm tfoot td {
+  border-bottom: 0;
+  font-weight: 700;
+}
+
+.operador {
+  font-weight: 700;
+  white-space: nowrap;
+  color: var(--marca);
+}
+
+.numCol {
+  text-align: right;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+
+.klm th.numCol,
+.klm td.numCol {
+  text-align: right;
+}
+
+.notaKlm {
+  margin-block: var(--e-2) var(--e-3);
+  font-size: var(--t-sm);
+  color: var(--tinta-media);
   max-width: 80ch;
 }

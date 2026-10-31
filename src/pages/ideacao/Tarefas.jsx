@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 import Breadcrumb from '../../components/Breadcrumb'
 import PageNav from '../../components/PageNav'
 import { personas } from '../../data/personas'
-import { arvores, metodo, rotulos } from '../../data/tarefas'
+import { arvores, comparacao, metodo, rotulos } from '../../data/tarefas'
 import pagina from '../Pagina.module.css'
 import estilos from './Tarefas.module.css'
 
@@ -25,6 +25,86 @@ function Plano({ texto }) {
       <strong>{texto.slice(0, corte + 1)}</strong>
       {texto.slice(corte + 1)}
     </li>
+  )
+}
+
+// Do nivel 2 para baixo: caixa do passo e, se houver, a lista do nivel
+// seguinte. Recursivo, para a arvore descer quantos niveis os dados tiverem.
+function Passo({ passo }) {
+  return (
+    <li className={estilos.neto}>
+      <p className={estilos.passo}>
+        <Rotulo numero={passo.numero} texto={passo.texto} />
+      </p>
+      {passo.subtarefas && (
+        <ol className={estilos.netos}>
+          {passo.subtarefas.map((filho) => (
+            <Passo key={filho.numero} passo={filho} />
+          ))}
+        </ol>
+      )}
+    </li>
+  )
+}
+
+const formatarTempo = (valor) =>
+  valor.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })
+
+// Tabela KLM de um caminho, com a soma calculada a partir dos passos
+function OpcaoKlm({ opcao }) {
+  const persona = personaPorId[opcao.persona]
+  const total = opcao.passos.reduce((soma, passo) => soma + passo.tempo, 0)
+  const idTitulo = `klm-${opcao.id}`
+
+  return (
+    <section className={estilos.opcao} aria-labelledby={idTitulo}>
+      <header className={estilos.opcaoCabecalho}>
+        {persona.foto && (
+          <img
+            className={estilos.rostoPequeno}
+            src={persona.foto.arquivo}
+            alt=""
+            width="640"
+            height="795"
+            loading="lazy"
+            decoding="async"
+          />
+        )}
+        <h3 id={idTitulo} className={estilos.opcaoTitulo}>
+          {opcao.titulo}
+        </h3>
+      </header>
+      <div className={estilos.rolagem} tabIndex="0" role="region" aria-labelledby={idTitulo}>
+        <table className={estilos.klm}>
+          <thead>
+            <tr>
+              <th scope="col">{comparacao.rotulos.operador}</th>
+              <th scope="col">{comparacao.rotulos.acao}</th>
+              <th scope="col" className={estilos.numCol}>
+                {comparacao.rotulos.tempo}
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {opcao.passos.map((passo, indice) => (
+              <tr key={indice}>
+                <td className={estilos.operador}>{passo.operador}</td>
+                <td>{passo.acao}</td>
+                <td className={estilos.numCol}>{formatarTempo(passo.tempo)}</td>
+              </tr>
+            ))}
+          </tbody>
+          <tfoot>
+            <tr>
+              <th scope="row" colSpan="2">
+                {comparacao.rotulos.total}
+              </th>
+              <td className={estilos.numCol}>{formatarTempo(total)}</td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+    </section>
   )
 }
 
@@ -77,9 +157,7 @@ function Arvore({ arvore }) {
                 {tarefa.subtarefas && (
                   <ol className={estilos.netos}>
                     {tarefa.subtarefas.map((passo) => (
-                      <li key={passo.numero} className={estilos.neto}>
-                        <Rotulo numero={passo.numero} texto={passo.texto} />
-                      </li>
+                      <Passo key={passo.numero} passo={passo} />
                     ))}
                   </ol>
                 )}
@@ -134,6 +212,28 @@ export default function Tarefas() {
             <Arvore key={arvore.id} arvore={arvore} />
           ))}
         </div>
+      </section>
+
+      <section className={pagina.secao} aria-labelledby="experiente-inexperiente">
+        <div className={pagina.tituloSecao}>
+          <span className="numeroLegenda">03</span>
+          <h2 id="experiente-inexperiente">{comparacao.titulo}</h2>
+        </div>
+        <p className={`textoCorrido ${pagina.intro}`}>{comparacao.intro}</p>
+
+        <div className={estilos.opcoes}>
+          {comparacao.opcoes.map((opcao) => (
+            <OpcaoKlm key={opcao.id} opcao={opcao} />
+          ))}
+        </div>
+
+        <p className={estilos.notaKlm}>{comparacao.nota}</p>
+
+        {comparacao.conclusao.map((paragrafo) => (
+          <p key={paragrafo} className="textoCorrido">
+            {paragrafo}
+          </p>
+        ))}
       </section>
 
       <PageNav atualId="tarefas" />
