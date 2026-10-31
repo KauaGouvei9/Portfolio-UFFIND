@@ -92,7 +92,7 @@ export const entregasPorFase = [
         nome: 'Crazy 4',
         nomeCompleto: 'Crazy 4',
         rota: '/ideacao/crazy-4',
-        resumo: 'Três folhas de ideias e o que cada uma trouxe para o protótipo.',
+        resumo: 'Quatro folhas de ideias e o que cada uma trouxe para o protótipo.',
       },
     ],
   },

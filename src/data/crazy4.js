@@ -1,6 +1,6 @@
 // Crazy 4: quarta entrega da Ideacao.
 //
-// Tres folhas feitas em sala, transcritas como os autores escreveram. A
+// Quatro folhas feitas em sala, transcritas como os autores escreveram. A
 // convergencia agrupa as ideias por intencao e diz o que segue para o
 // prototipo e por que, apontando o dado da Imersao que sustenta a escolha.
 //
@@ -9,10 +9,11 @@
 import fotoKauaMuller from '../assets/crazy4/kaua-muller.webp'
 import fotoGiancarlo from '../assets/crazy4/giancarlo.webp'
 import fotoFabricio from '../assets/crazy4/fabricio.webp'
+import fotoKayo from '../assets/crazy4/kayo.webp'
 
 export const metodo = {
   intro:
-    'Três folhas de ideias feitas em sala e o que cada uma trouxe para o protótipo.',
+    'Quatro folhas de ideias feitas em sala e o que cada uma trouxe para o protótipo.',
   paragrafos: [
     'O Crazy 4 é uma variação do Crazy 8. A folha é dobrada em quatro partes, e cada parte pede uma solução com uma regra diferente: uma solução cara, uma barata e rápida, uma inspirada em jogos e uma inspirada em série, livro ou robôs. As regras ajudam a sair das ideias óbvias.',
     'Cada integrante fez a sua folha sozinho, a partir da pergunta do How Might We. Depois juntamos as ideias que tentavam resolver a mesma coisa, mesmo quando a tecnologia era bem diferente. O teletransporte e a lente que guia, por exemplo, viraram a tela de "Como chegar".',
@@ -112,12 +113,40 @@ export const folhas = [
       },
     ],
   },
+  {
+    id: 'kayo',
+    autor: 'Kayo Vianna Cipriano',
+    foto: fotoKayo,
+    largura: 1200,
+    altura: 1600,
+    alt: 'Folha de caderno dividida em quatro quadrantes, com desenhos de um professor dando aula numa casa, quadros de horário em dois andares, uma pessoa seguindo um caminho pontilhado até uma porta e um mini drone guia.',
+    quadrantes: [
+      {
+        tipo: 'Solução cara',
+        texto: 'O professor da matéria vai até a casa do estudante e dá a aula de forma particular.',
+      },
+      {
+        tipo: 'Barata e rápida',
+        texto:
+          'Quadro de horários com a informação em todos os andares, e organizado de um jeito menos bagunçado.',
+      },
+      {
+        tipo: 'Inspirada em jogos',
+        texto: 'Minimapa: um dispositivo que guia até a sala desejada por meio de um minimapa.',
+      },
+      {
+        tipo: 'Robôs e IoT',
+        texto:
+          'Cada aluno recebe um mini robô guia, um mini drone configurado pelo celular, que leva até o local desejado.',
+      },
+    ],
+  },
 ]
 
 // fontes: dado da Imersao que sustenta a escolha (nao aparece na tela)
 export const convergencia = {
   intro:
-    'As doze ideias das folhas formam cinco grupos. De cada grupo, levamos para o protótipo uma versão que dá para construir e que conversa com o que a pesquisa encontrou.',
+    'As ideias das quatro folhas formam cinco grupos. De cada grupo, levamos para o protótipo uma versão que dá para construir e que conversa com o que a pesquisa encontrou.',
   direcoes: [
     {
       titulo: 'A informação em cada andar',
@@ -125,6 +154,7 @@ export const convergencia = {
         { texto: 'Mural gigante em cada andar', autor: 'Kauã Muller' },
         { texto: 'Panfleto minimalista no mural de cada andar', autor: 'Giancarlo' },
         { texto: 'Totens informacionais por todo o IC', autor: 'Giancarlo' },
+        { texto: 'Quadro de horários organizado em todos os andares', autor: 'Kayo' },
       ],
       noPrototipo: 'Um QR Code na entrada e em cada andar, que abre o UFFIND já naquele andar.',
       porque:
@@ -151,8 +181,10 @@ export const convergencia = {
         { texto: 'Portal que abre na frente do local', autor: 'Fabricio' },
         { texto: 'Lente que guia até a sala', autor: 'Giancarlo' },
         { texto: 'Robôs com tela interativa', autor: 'Kauã Muller' },
+        { texto: 'Minimapa que guia até a sala', autor: 'Kayo' },
+        { texto: 'Mini robô guia configurado pelo celular', autor: 'Kayo' },
       ],
-      noPrototipo: '"Como chegar" passo a passo: o prédio, o andar e o lado do corredor.',
+      noPrototipo: '"Como chegar" passo a passo, com um minimapa do andar: o prédio, o andar e o lado do corredor.',
       porque:
         'Todas essas ideias tentam evitar que a pessoa se perca no caminho. É a tarefa 3 da Beatriz, e 71,4% de quem respondeu o questionário deu prioridade alta ou máxima a saber como chegar a um local dentro do IC.',
       fontes: ['Q', 'E1'],
@@ -167,7 +199,10 @@ export const convergencia = {
     },
     {
       titulo: 'Resposta do jeito de cada um',
-      ideias: [{ texto: 'Implante que responde de forma personalizada', autor: 'Fabricio' }],
+      ideias: [
+        { texto: 'Implante que responde de forma personalizada', autor: 'Fabricio' },
+        { texto: 'Aula particular na casa do estudante', autor: 'Kayo' },
+      ],
       noPrototipo: '"Minhas disciplinas": a pessoa salva as suas turmas e vê as salas da própria grade.',
       porque:
         'Nas respostas abertas do questionário, apareceu o pedido de ver as informações conforme a própria grade.',
