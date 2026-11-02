@@ -96,6 +96,21 @@ export const entregasPorFase = [
       },
     ],
   },
+  {
+    faseId: 'prototipacao',
+    nome: 'Prototipação',
+    intro:
+      'A etapa de transformar o que a pesquisa encontrou em telas que dá para navegar e testar.',
+    entregas: [
+      {
+        id: 'prototipo',
+        nome: 'Protótipo',
+        nomeCompleto: 'Protótipo',
+        rota: '/prototipacao/prototipo',
+        resumo: 'O protótipo de alta fidelidade do UFFIND, gerado no Figma Make.',
+      },
+    ],
+  },
 ]
 
 // so as fases que ja tem pagina publicada

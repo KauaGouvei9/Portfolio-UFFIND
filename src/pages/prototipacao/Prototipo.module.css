@@ -1,0 +1,16 @@
+/* link para abrir o prototipo no Figma, logo abaixo do embed */
+.abrir {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  min-height: 44px;
+  margin-top: var(--e-2);
+  font-weight: 600;
+  color: var(--azul-uff);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.abrir:hover {
+  color: var(--tinta);
+}

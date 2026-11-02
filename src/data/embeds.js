@@ -14,10 +14,15 @@ export const embeds = {
   // autenticacao e cairia no card de erro para quem visita o portfolio.
   powerBI:
     'https://app.powerbi.com/view?r=eyJrIjoiMzk1M2QwODQtMGUwMC00MTc0LTk3ZjItMzBiNThmNmIzMjA1IiwidCI6ImRhYjAxMTk3LWRlZTAtNGQ0ZC1hOTA0LTNlNWY0YjBkODFhMyJ9',
+
+  // Prototipo gerado no Figma Make e publicado pelo Kayo (Publish). O endereco
+  // .figma.site abre sem login e pode ser embutido direto.
+  prototipo: 'https://suds-thorn-95835211.figma.site/',
 }
 
 // Links externos que abrem em nova aba.
 export const links = {
+  prototipo: 'https://suds-thorn-95835211.figma.site/',
   questionario:
     'https://docs.google.com/forms/d/e/1FAIpQLSehTnkBUmLGbI-8mmAjJvoPzx3MPNU-6kKu0YUMUX56PFDQ4w/viewform',
 }
