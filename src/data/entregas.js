@@ -111,6 +111,35 @@ export const entregasPorFase = [
       },
     ],
   },
+  {
+    faseId: 'avaliacao',
+    nome: 'Avaliação',
+    intro:
+      'A etapa de testar o protótipo com especialistas e com usuários e de descobrir o que precisa mudar.',
+    entregas: [
+      {
+        id: 'heuristica',
+        nome: 'Avaliação Heurística',
+        nomeCompleto: 'Avaliação Heurística',
+        rota: '/avaliacao/heuristica',
+        resumo: '14 problemas encontrados por avaliadores de outros grupos, pelas heurísticas de Nielsen.',
+      },
+      {
+        id: 'first-click',
+        nome: 'First Click',
+        nomeCompleto: 'First Click',
+        rota: '/avaliacao/first-click',
+        resumo: 'Dois estudos no Useberry mostrando para onde as pessoas vão primeiro na tela inicial.',
+      },
+      {
+        id: 'percurso-cognitivo',
+        nome: 'Percurso Cognitivo',
+        nomeCompleto: 'Percurso Cognitivo',
+        rota: '/avaliacao/percurso-cognitivo',
+        resumo: 'O protótipo percorrido passo a passo no lugar do Thiago, para ver onde ele trava.',
+      },
+    ],
+  },
 ]
 
 // so as fases que ja tem pagina publicada
