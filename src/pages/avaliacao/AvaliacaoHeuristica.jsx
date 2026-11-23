@@ -11,29 +11,26 @@ const { rotulos, problemas, heuristicas, telas } = dados
 const caminhoPlanilha = `${import.meta.env.BASE_URL}${dados.relatorio.arquivo}`
 
 // Tudo o que os graficos mostram sai da lista de problemas, para os numeros
-// nunca ficarem diferentes entre a lista, a matriz e as barras.
+// nunca ficarem diferentes entre a lista, o resumo e as barras.
 const niveis = dados.escala.filter((nivel) => nivel.nivel >= 1 && nivel.nivel <= 3)
 const nomeNivel = Object.fromEntries(dados.escala.map((nivel) => [nivel.nivel, nivel.nome]))
 const porGravidade = niveis.map((nivel) => ({
   ...nivel,
   total: problemas.filter((p) => p.gravidade === nivel.nivel).length,
 }))
-const totalPorHeuristica = Object.fromEntries(
-  heuristicas.map((h) => [h.id, problemas.filter((p) => p.heuristicas.includes(h.id)).length]),
-)
-const maiorHeuristica = Math.max(...Object.values(totalPorHeuristica))
-const porTela = telas.map((tela) => {
-  const daTela = problemas.filter((p) => p.telas.includes(tela))
-  return {
-    tela,
-    total: daTela.length,
-    partes: niveis.map((nivel) => ({
-      nivel: nivel.nivel,
-      total: daTela.filter((p) => p.gravidade === nivel.nivel).length,
-    })),
-  }
+// uma linha de grafico: quantos problemas, divididos pela gravidade
+const linha = (rotulo, lista) => ({
+  rotulo,
+  total: lista.length,
+  partes: niveis.map((nivel) => ({
+    nivel: nivel.nivel,
+    total: lista.filter((p) => p.gravidade === nivel.nivel).length,
+  })),
 })
-const maiorTela = Math.max(...porTela.map((linha) => linha.total))
+const porHeuristica = heuristicas.map((h) =>
+  linha(`${h.id} ${h.nome}`, problemas.filter((p) => p.heuristicas.includes(h.id))),
+)
+const porTela = telas.map((tela) => linha(tela, problemas.filter((p) => p.telas.includes(tela))))
 const principais = problemas.filter((p) => p.gravidade === 3)
 
 // cor de cada nivel de gravidade, sempre com texto junto (nunca so a cor)
@@ -155,120 +152,39 @@ function CartaoProblema({ problema }) {
   )
 }
 
-// a peca principal: problema x heuristica, sobre a malha tecnica do site
-function Matriz() {
+// barras empilhadas: quantos problemas por linha, divididos pela gravidade.
+// O numero total fica escrito ao lado; a barra so mostra a proporcao.
+function BarrasEmpilhadas({ linhas, largo = false }) {
   const ref = useMedidas()
-
-  return (
-    <div className={estilos.matrizMoldura} ref={ref}>
-      <div className={`malha ${estilos.matrizRolagem}`} tabIndex="0" role="region" aria-labelledby="matriz">
-        <table className={estilos.matriz}>
-          <caption className="apenasLeitor">{rotulos.legendaMatriz}</caption>
-          <thead>
-            <tr>
-              <th scope="col" className={estilos.colProblema}>
-                {rotulos.problema}
-              </th>
-              {heuristicas.map((h) => (
-                <th key={h.id} scope="col" className={estilos.colH}>
-                  <abbr title={h.nome}>{h.id}</abbr>
-                </th>
-              ))}
-            </tr>
-          </thead>
-          <tbody>
-            {problemas.map((p) => (
-              <tr key={p.numero}>
-                <th scope="row" className={estilos.colProblema}>
-                  <span className={estilos.linhaNumero}>{p.numero}</span>
-                  <span className={estilos.linhaTitulo}>{p.titulo}</span>
-                  <span className="apenasLeitor">
-                    , {rotulos.gravidade.toLowerCase()} {nomeNivel[p.gravidade].toLowerCase()}
-                  </span>
-                </th>
-                {heuristicas.map((h) => (
-                  <td key={h.id} className={estilos.celula}>
-                    {p.heuristicas.includes(h.id) && (
-                      <>
-                        <span className={`${estilos.marca} ${CLASSE_NIVEL[p.gravidade]}`} aria-hidden="true" />
-                        <span className="apenasLeitor">{rotulos.viola}</span>
-                      </>
-                    )}
-                  </td>
-                ))}
-              </tr>
-            ))}
-          </tbody>
-          <tfoot>
-            <tr>
-              <th scope="row" className={estilos.colProblema}>
-                {rotulos.total}
-              </th>
-              {heuristicas.map((h) => {
-                const total = totalPorHeuristica[h.id]
-                return (
-                  <td
-                    key={h.id}
-                    className={`${estilos.total} ${total === maiorHeuristica ? estilos.totalMaior : ''}`}
-                  >
-                    <span
-                      className={estilos.totalBarra}
-                      data-medida={(total / maiorHeuristica) * 100}
-                      aria-hidden="true"
-                    />
-                    <span className={estilos.totalNumero}>{total}</span>
-                  </td>
-                )
-              })}
-            </tr>
-          </tfoot>
-        </table>
-      </div>
-
-      <div className={estilos.matrizPe}>
-        <Legenda />
-        <dl className={estilos.glossario}>
-          {heuristicas.map((h) => (
-            <div key={h.id}>
-              <dt>{h.id}</dt>
-              <dd>{h.nome}</dd>
-            </div>
-          ))}
-        </dl>
-      </div>
-    </div>
-  )
-}
-
-// barras empilhadas: quantos problemas por tela, divididos pela gravidade
-function PorTela() {
-  const ref = useMedidas()
+  const maior = Math.max(...linhas.map((l) => l.total))
 
   return (
     <div className={estilos.telas} ref={ref}>
       <ul className={estilos.telasLista}>
-        {porTela.map((linha) => (
-          <li key={linha.tela} className={estilos.telaLinha}>
-            <span className={estilos.telaNome}>{linha.tela}</span>
+        {linhas.map((l) => (
+          <li key={l.rotulo} className={`${estilos.telaLinha} ${largo ? estilos.linhaLarga : ''}`}>
+            <span className={estilos.telaNome}>{l.rotulo}</span>
             <span className={estilos.telaTrilho} aria-hidden="true">
-              <span className={estilos.telaPilha} data-medida={(linha.total / maiorTela) * 100}>
-                {linha.partes
-                  .filter((parte) => parte.total > 0)
-                  .map((parte) => (
-                    <span
-                      key={parte.nivel}
-                      className={`${estilos.telaParte} ${CLASSE_NIVEL[parte.nivel]}`}
-                      data-medida={(parte.total / linha.total) * 100}
-                    />
-                  ))}
-              </span>
+              {l.total > 0 && (
+                <span className={estilos.telaPilha} data-medida={(l.total / maior) * 100}>
+                  {l.partes
+                    .filter((parte) => parte.total > 0)
+                    .map((parte) => (
+                      <span
+                        key={parte.nivel}
+                        className={`${estilos.telaParte} ${CLASSE_NIVEL[parte.nivel]}`}
+                        data-medida={(parte.total / l.total) * 100}
+                      />
+                    ))}
+                </span>
+              )}
             </span>
             <span className={estilos.telaTotal}>
-              {linha.total}
+              {l.total}
               <span className="apenasLeitor">
                 {' '}
                 {rotulos.problemasDoisPontos}{' '}
-                {linha.partes
+                {l.partes
                   .filter((parte) => parte.total > 0)
                   .map((parte) => `${parte.total} ${nomeNivel[parte.nivel].toLowerCase()}`)
                   .join(', ')}
@@ -329,14 +245,14 @@ export default function AvaliacaoHeuristica() {
         </ol>
       </Secao>
 
-      <Secao numero="04" id="matriz" titulo="Onde estão os problemas">
-        <p className={`textoCorrido ${pagina.intro}`}>{dados.matrizIntro}</p>
-        <Matriz />
+      <Secao numero="04" id="por-heuristica" titulo="Problemas por heurística">
+        <p className={`textoCorrido ${pagina.intro}`}>{dados.heuristicasIntro}</p>
+        <BarrasEmpilhadas linhas={porHeuristica} largo />
       </Secao>
 
       <Secao numero="05" id="por-tela" titulo="Problemas por tela">
         <p className={`textoCorrido ${pagina.intro}`}>{dados.telasIntro}</p>
-        <PorTela />
+        <BarrasEmpilhadas linhas={porTela} />
       </Secao>
 
       <Secao numero="06" id="resultados" titulo="Resultados">

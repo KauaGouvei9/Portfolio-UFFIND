@@ -258,168 +258,7 @@
 }
 
 /* ==========================================================================
-   Matriz problema x heuristica
-   ========================================================================== */
-.matrizMoldura {
-  margin-top: var(--e-3);
-  border: 1px solid var(--linha);
-  border-radius: var(--raio);
-  background-color: var(--papel-alt);
-}
-
-.matrizRolagem {
-  /* position: os textos so para leitor de tela (absolutos) ficam presos aqui
-     dentro; sem isso eles escapam da rolagem e alargam a pagina no celular */
-  position: relative;
-  overflow-x: auto;
-  background-color: var(--papel);
-}
-
-.matrizRolagem:focus-visible {
-  outline: 2px solid var(--azul-uff);
-  outline-offset: 2px;
-}
-
-.matriz {
-  width: 100%;
-  min-width: 46rem;
-  border-collapse: collapse;
-  font-size: var(--t-sm);
-}
-
-.matriz th,
-.matriz td {
-  border-bottom: 1px solid var(--linha);
-}
-
-.matriz thead th {
-  padding: 0.75rem 0.25rem;
-  background-color: var(--papel-alt);
-  font-weight: 700;
-  color: var(--azul-uff);
-}
-
-.matriz thead abbr {
-  text-decoration: none;
-  cursor: help;
-}
-
-.colProblema {
-  min-width: 17rem;
-  padding: 0.5rem var(--e-2);
-  text-align: left;
-  font-weight: 500;
-}
-
-.matriz thead .colProblema {
-  color: var(--tinta-media);
-}
-
-.colH {
-  width: 3rem;
-  text-align: center;
-}
-
-.linhaNumero {
-  display: inline-block;
-  min-width: 1.75rem;
-  font-weight: 700;
-  color: var(--tinta-media);
-}
-
-.matriz tbody tr:hover {
-  background-color: color-mix(in srgb, var(--azul-uff) 6%, transparent);
-}
-
-.celula {
-  text-align: center;
-  vertical-align: middle;
-}
-
-/* o ponto que marca a violacao, na cor da gravidade */
-.marca {
-  display: inline-block;
-  width: 0.875rem;
-  height: 0.875rem;
-  border-radius: 50%;
-  background-color: var(--cor-nivel);
-  box-shadow: 0 0 0 2px var(--papel);
-}
-
-.matriz tfoot th,
-.matriz tfoot td {
-  border-bottom: 0;
-  background-color: var(--papel-alt);
-}
-
-.matriz tfoot th {
-  font-weight: 700;
-}
-
-/* total: uma barra vertical curta e o numero embaixo */
-.total {
-  height: 5.5rem;
-  padding: 0.5rem 0.25rem;
-  text-align: center;
-  vertical-align: bottom;
-}
-
-.totalBarra {
-  display: block;
-  width: 0.875rem;
-  height: calc(var(--medida, 0) * 0.42px);
-  margin: 0 auto 0.375rem;
-  border-radius: var(--raio) var(--raio) 0 0;
-  background-color: var(--linha);
-}
-
-.totalNumero {
-  font-family: var(--fonte-titulo);
-  font-size: var(--t-md);
-  font-weight: 700;
-  color: var(--tinta-media);
-}
-
-.totalMaior .totalBarra {
-  background-color: var(--marca);
-}
-
-.totalMaior .totalNumero {
-  color: var(--marca);
-}
-
-.matrizPe {
-  display: grid;
-  gap: var(--e-2);
-  padding: var(--e-2) var(--e-3);
-  border-top: 1px solid var(--linha);
-}
-
-.glossario {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
-  gap: 0.25rem var(--e-3);
-  font-size: var(--t-xs);
-  color: var(--tinta-media);
-}
-
-.glossario div {
-  display: flex;
-  gap: 0.5rem;
-}
-
-.glossario dt {
-  min-width: 2rem;
-  font-weight: 700;
-  color: var(--azul-uff);
-}
-
-.glossario dd {
-  margin: 0;
-}
-
-/* ==========================================================================
-   Problemas por tela: barras empilhadas
+   Problemas por heuristica e por tela: barras empilhadas
    ========================================================================== */
 .telas {
   display: grid;
@@ -443,6 +282,13 @@
   align-items: center;
   gap: var(--e-2);
   font-size: var(--t-sm);
+}
+
+/* heuristicas tem nomes longos: coluna do rotulo mais larga */
+@media (min-width: 700px) {
+  .linhaLarga {
+    grid-template-columns: 19rem 1fr 2rem;
+  }
 }
 
 @media (max-width: 480px) {

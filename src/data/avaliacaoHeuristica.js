@@ -4,8 +4,8 @@
 // outros grupos e a planilha consolidada, publicada em public/assets/docs/.
 // Os nomes dos avaliadores nao aparecem no site, por decisao do grupo.
 //
-// A lista `problemas` e a fonte unica: o resumo, a matriz e o grafico por
-// tela sao calculados a partir dela na pagina. Mudou a planilha, mude aqui.
+// A lista `problemas` e a fonte unica: o resumo e os graficos por heuristica
+// e por tela sao calculados a partir dela na pagina. Mudou a planilha, mude aqui.
 //
 // O problema 1 junta o relato do A1 (lado impar sem referencia) e o do A2
 // (planta sem marcar onde a pessoa esta). Por isso tem H1, H2 e H6.
@@ -195,20 +195,16 @@ export const avaliacaoHeuristica = {
     deAvaliacoes: 'das 3 avaliações',
     gravidade: 'Gravidade',
     heuristicas: 'Heurísticas',
-    problema: 'Problema',
-    total: 'Total por heurística',
-    viola: 'viola esta heurística',
     legenda: 'Legenda de gravidade',
-    legendaMatriz: 'Problemas encontrados cruzados com as heurísticas de Nielsen que cada um viola.',
     escala: 'Escala de gravidade de Nielsen',
     problemasDoisPontos: 'problemas:',
   },
 
   principaisIntro:
-    'Os 5 problemas de gravidade grande. Os outros 9 estão na matriz e na planilha.',
+    'Os 5 problemas de gravidade grande. Os outros 9 estão na planilha.',
 
-  matrizIntro:
-    'Cada linha é um problema e cada coluna, uma heurística. O ponto marca onde o problema fere a heurística, e a cor diz o quanto ele é grave. A última linha soma cada coluna.',
+  heuristicasIntro:
+    'Quantos problemas ferem cada heurística. A cor mostra a gravidade, e o número ao lado é o total. Um problema pode ferir mais de uma heurística, por isso a soma passa de 14.',
 
   telasIntro:
     'Quantos problemas cada tela acumula, separados pela gravidade. Um problema pode aparecer em mais de uma tela.',

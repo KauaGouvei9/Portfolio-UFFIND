@@ -1,4 +1,3 @@
-import { ExternalLink } from 'lucide-react'
 import Breadcrumb from '../../components/Breadcrumb'
 import PageNav from '../../components/PageNav'
 import { firstClick as dados } from '../../data/firstClick'
@@ -96,6 +95,18 @@ export default function FirstClick() {
           <h2 id="como-foi">Como foi feito</h2>
         </div>
         <p className="textoCorrido">{dados.comoFoi}</p>
+        <figure className={estilos.mapa}>
+          <img
+            className={estilos.mapaImagem}
+            src={dados.exemploMapa.arquivo}
+            alt={dados.exemploMapa.alt}
+            width={dados.exemploMapa.largura}
+            height={dados.exemploMapa.altura}
+            loading="lazy"
+            decoding="async"
+          />
+          <figcaption className={estilos.mapaLegenda}>{dados.exemploMapa.legenda}</figcaption>
+        </figure>
       </section>
 
       {dados.estudos.map((estudo, indice) => (
@@ -107,11 +118,6 @@ export default function FirstClick() {
             </h2>
           </div>
           <p className={`textoCorrido ${pagina.intro}`}>{estudo.escala}</p>
-          <a className={estilos.linkExterno} href={estudo.link} target="_blank" rel="noreferrer">
-            {rotulos.link}
-            <ExternalLink size={15} aria-hidden="true" />
-            <span className="apenasLeitor">(abre em uma nova aba)</span>
-          </a>
 
           <div className={estilos.cartoes}>
             {estudo.tarefas.map((tarefa, i) => (

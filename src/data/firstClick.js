@@ -8,6 +8,11 @@
 // No estudo do Fabricio, a tarefa 1 nao define uma area esperada. A pagina
 // mostra onde as pessoas clicaram, sem chamar isso de acerto. Os numeros da
 // tarefa 2 dele foram estimados contando os pontos do mapa de calor.
+//
+// Os estudos estouraram a cota gratuita do Useberry e os links deixaram de
+// abrir. No lugar deles, a pagina mostra um mapa de calor de exemplo.
+
+import mapaCalor from '../assets/avaliacao/mapa-calor-aula-comecando.webp'
 
 export const firstClick = {
   intro:
@@ -21,6 +26,15 @@ export const firstClick = {
   comoFoi:
     'Fizemos dois estudos independentes no Useberry, cada um com 2 tarefas e 10 participantes, usando a tela inicial do protótipo no formato de celular. Todos os participantes terminaram os dois estudos.',
 
+  exemploMapa: {
+    arquivo: mapaCalor,
+    largura: 446,
+    altura: 932,
+    alt: 'Tela inicial do UFFIND com pontos de calor: um grupo de cliques no campo de busca e outro no cartão Salas por andar.',
+    legenda:
+      'Mapa de calor da tarefa "Aula começando", no Estudo 1. Cada mancha é um primeiro clique: metade caiu no campo de busca e três foram para "Salas por andar".',
+  },
+
   rotulos: {
     estudo: 'Estudo',
     tarefa: 'Tarefa',
@@ -32,13 +46,11 @@ export const firstClick = {
     confianca: 'Confiança',
     leitura: 'O que isso mostra',
     sugestao: 'Sugestão de redesign',
-    link: 'Abrir o estudo no Useberry',
   },
 
   estudos: [
     {
       id: 'kaua',
-      link: 'https://app.useberry.com/t/LzMUyoJ0lTsTQK/',
       escala: 'Confiança de 0 a 10, depois de cada tarefa.',
       tarefas: [
         {
@@ -80,7 +92,6 @@ export const firstClick = {
     },
     {
       id: 'fabricio',
-      link: 'https://app.useberry.com/sharing-results/t42FUxidpDf7Yq/?segmentID=f1af03ab-ef41-4c90-b7b4-6fd738e423fe',
       escala: 'Depois de cada tarefa: muito seguro, em dúvida ou não consegui me localizar.',
       tarefas: [
         {
