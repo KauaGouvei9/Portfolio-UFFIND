@@ -3,6 +3,10 @@
 // no fim da pagina da Equipe.
 //
 // Depois de editar este arquivo, rode: npm run declaracao
+//
+// Os anexos sao os PDFs originais dos prompts do prototipo, guardados em
+// scripts/anexos-declaracao/. O script junta os dois no fim da declaracao,
+// sem redigitar: o meta-prompt foi usado sem alteracao e precisa ficar igual.
 
 export const declaracaoIA = {
   titulo: 'Declaração de uso de inteligência artificial',
@@ -31,6 +35,11 @@ export const declaracaoIA = {
         'As três fotos foram geradas no Gemini, uma por vez, a partir de prompts escritos com apoio de IA. Nenhuma retrata participante da pesquisa. A página indica, em cada ficha, que a imagem foi gerada por IA.',
     },
     {
+      titulo: 'Prompt do protótipo',
+      texto:
+        'O grupo escreveu um meta-prompt com o material da Imersão e da Ideação: o problema, os resultados do questionário, das entrevistas e do Mapa de Empatia, as ideias mantidas do Crazy 4, a análise competitiva, as personas, os cenários e as tarefas. O Gemini transformou esse meta-prompt no prompt principal, que foi colado no Figma Make sem edição e gerou a primeira versão do protótipo. Depois, o grupo conferiu as telas contra as personas e o prédio real e reuniu todos os ajustes num único prompt de correção. Os dois documentos estão anexados ao fim desta declaração.',
+    },
+    {
       titulo: 'Ajustes de ortografia e formatação',
       texto:
         'Correção ortográfica e padronização de formatação dos textos escritos pelo grupo.',
@@ -44,6 +53,11 @@ export const declaracaoIA = {
       titulo: 'Verificação do portfólio',
       texto:
         'Conferência do conteúdo publicado contra os itens pedidos no enunciado da entrega, para localizar o que ainda faltava.',
+    },
+    {
+      titulo: 'Manutenção do portfólio na fase de Avaliação',
+      texto:
+        'Na fase de Avaliação, usamos a IA só como ferramenta de manutenção do portfólio: montar as páginas da Avaliação Heurística, do First Click e do Percurso Cognitivo a partir do material do grupo, conferir os números contra as avaliações originais e ajustar textos e gráficos. As avaliações em si foram feitas por pessoas, não pela IA.',
     },
   ],
 
@@ -118,9 +132,30 @@ export const declaracaoIA = {
         'O grupo gerou as imagens no Gemini e escolheu as versões publicadas.',
     },
     {
+      prompt:
+        'Meta-prompt UFFIND (anexo 1): crie o prompt que vou usar no Figma Make para criar os protótipos do UFFIND.',
+      depois:
+        'O grupo colou no Figma Make, sem edição, o prompt que o Gemini devolveu. Depois de conferir as telas, escreveu o prompt de correção (anexo 2) com os ajustes que o protótipo final precisava.',
+    },
+    {
       prompt: 'Com o checklist final, como ficamos?',
       depois:
         'O grupo usou a conferência para fechar a entrega e definir o que ainda seria ajustado.',
+    },
+  ],
+
+  encerramento:
+    'Com a atividade Avaliação Heurística Consolidada, encerramos o trabalho.',
+
+  anexosIntro: 'Os documentos a seguir estão anexados, na ordem de uso.',
+  anexos: [
+    {
+      titulo: 'Anexo 1: Meta-prompt UFFIND, usado no Gemini para gerar o prompt do Figma Make',
+      arquivo: 'scripts/anexos-declaracao/1-meta-prompt.pdf',
+    },
+    {
+      titulo: 'Anexo 2: Prompt utilizado no Figma Make, com o prompt principal e o prompt de correção',
+      arquivo: 'scripts/anexos-declaracao/2-prompt-figma-make.pdf',
     },
   ],
 

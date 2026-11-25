@@ -6,7 +6,9 @@
 // PDF, e nao vale a pena adicionar uma so para um documento de texto. Lendo
 // direto do arquivo de dados, o PDF nunca fica diferente do que o site mostra.
 
-import { writeFileSync, mkdirSync } from 'node:fs'
+import { writeFileSync, mkdirSync, existsSync, rmSync } from 'node:fs'
+import { execFileSync } from 'node:child_process'
+import { tmpdir } from 'node:os'
 import { dirname, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { declaracaoIA } from '../src/data/declaracaoIA.js'
@@ -127,6 +129,16 @@ declaracaoIA.prompts.forEach((item, indice) => {
   })
 })
 
+linhaHorizontal()
+
+escrever(declaracaoIA.encerramento, { tamanho: 10, negrito: true, espacoDepois: 14 })
+
+escrever('Anexos', { tamanho: 13, negrito: true, espacoDepois: 6 })
+escrever(declaracaoIA.anexosIntro, { tamanho: 10, espacoDepois: 8 })
+declaracaoIA.anexos.forEach((anexo) => {
+  escrever(anexo.titulo, { tamanho: 10, recuo: 14, espacoDepois: 4 })
+})
+
 novaPagina()
 
 // ---------------------------------------------------------------- estrutura
@@ -172,7 +184,27 @@ for (let i = 1; i < total; i += 1) {
 pdf += `trailer\n<< /Size ${total} /Root 1 0 R >>\nstartxref\n${inicioXref}\n%%EOF\n`
 
 mkdirSync(dirname(SAIDA), { recursive: true })
-writeFileSync(SAIDA, Buffer.from(pdf, 'latin1'))
+
+// Os anexos sao PDFs prontos. O pdfunite (pacote poppler-utils) junta a
+// declaracao com eles, sem mexer no conteudo dos anexos.
+const anexos = declaracaoIA.anexos.map((anexo) => resolve(RAIZ, anexo.arquivo))
+const faltando = anexos.filter((arquivo) => !existsSync(arquivo))
+if (faltando.length) {
+  throw new Error(`Anexo nao encontrado: ${faltando.join(', ')}`)
+}
+
+const temporario = resolve(tmpdir(), 'declaracao-ia-sem-anexos.pdf')
+writeFileSync(temporario, Buffer.from(pdf, 'latin1'))
+try {
+  execFileSync('pdfunite', [temporario, ...anexos, SAIDA])
+} catch (erro) {
+  throw new Error(
+    'Nao foi possivel juntar os anexos. Instale o pdfunite (sudo apt install poppler-utils).',
+    { cause: erro },
+  )
+} finally {
+  rmSync(temporario, { force: true })
+}
 
 console.log(`Declaracao de IA gerada: ${SAIDA}`)
-console.log(`${paginas.length} pagina(s), ${(Buffer.byteLength(pdf, 'latin1') / 1024).toFixed(1)} KB`)
+console.log(`${paginas.length} pagina(s) da declaracao + ${anexos.length} anexo(s)`)
