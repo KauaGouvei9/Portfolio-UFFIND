@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Download } from 'lucide-react'
 import Breadcrumb from '../../components/Breadcrumb'
 import PageNav from '../../components/PageNav'
@@ -18,19 +18,23 @@ const porGravidade = niveis.map((nivel) => ({
   ...nivel,
   total: problemas.filter((p) => p.gravidade === nivel.nivel).length,
 }))
-// uma linha de grafico: quantos problemas, divididos pela gravidade
-const linha = (rotulo, lista) => ({
-  rotulo,
-  total: lista.length,
-  partes: niveis.map((nivel) => ({
-    nivel: nivel.nivel,
-    total: lista.filter((p) => p.gravidade === nivel.nivel).length,
-  })),
-})
-const porHeuristica = heuristicas.map((h) =>
-  linha(`${h.id} ${h.nome}`, problemas.filter((p) => p.heuristicas.includes(h.id))),
+// uma linha de grafico: os problemas daquela heuristica ou tela, do mais
+// grave para o menos grave. As linhas vao da que tem mais problemas para a
+// que tem menos; no empate, a que tem mais problemas grandes vem antes.
+const ordenarProblemas = (lista) =>
+  [...lista].sort((a, b) => b.gravidade - a.gravidade || a.numero - b.numero)
+const linha = (rotulo, lista, codigo) => ({ rotulo, codigo, problemas: ordenarProblemas(lista) })
+const grandes = (l) => l.problemas.filter((p) => p.gravidade === 3).length
+const ordenarLinhas = (linhas) =>
+  [...linhas].sort((a, b) => b.problemas.length - a.problemas.length || grandes(b) - grandes(a))
+const porHeuristica = ordenarLinhas(
+  heuristicas.map((h) =>
+    linha(h.nome, problemas.filter((p) => p.heuristicas.includes(h.id)), h.id),
+  ),
 )
-const porTela = telas.map((tela) => linha(tela, problemas.filter((p) => p.telas.includes(tela))))
+const porTela = ordenarLinhas(
+  telas.map((tela) => linha(tela, problemas.filter((p) => p.telas.includes(tela)))),
+)
 const principais = problemas.filter((p) => p.gravidade === 3)
 
 // cor de cada nivel de gravidade, sempre com texto junto (nunca so a cor)
@@ -70,10 +74,10 @@ function Secao({ numero, id, titulo, children }) {
 function Legenda() {
   return (
     <ul className={estilos.legenda} aria-label={rotulos.legenda}>
-      {[...niveis].reverse().map((nivel) => (
+      {niveis.map((nivel) => (
         <li key={nivel.nivel}>
           <span className={`${estilos.amostra} ${CLASSE_NIVEL[nivel.nivel]}`} aria-hidden="true" />
-          {nivel.nivel} {nivel.nome}
+          {nivel.nome} ({nivel.nivel})
         </li>
       ))}
     </ul>
@@ -152,49 +156,108 @@ function CartaoProblema({ problema }) {
   )
 }
 
-// barras empilhadas: quantos problemas por linha, divididos pela gravidade.
-// O numero total fica escrito ao lado; a barra so mostra a proporcao.
-function BarrasEmpilhadas({ linhas, largo = false }) {
-  const ref = useMedidas()
-  const maior = Math.max(...linhas.map((l) => l.total))
+// "a, b e c"
+function listar(itens) {
+  if (itens.length < 2) return itens.join('')
+  return `${itens.slice(0, -1).join(', ')} ${rotulos.e} ${itens.at(-1)}`
+}
+
+const descrever = (p) =>
+  `${rotulos.problema} ${p.numero} (${nomeNivel[p.gravidade].toLowerCase()}): ${p.titulo}`
+
+// Grafico de unidades: cada quadrado e um problema, com o numero da planilha.
+// Ao passar o mouse (ou tocar) num quadrado, o mesmo problema acende nas
+// outras linhas e a frase abaixo do grafico diz qual e.
+function GraficoProblemas({ linhas, destaque, colunaRotulo }) {
+  const [ativo, setAtivo] = useState(null)
+  const problemaAtivo = problemas.find((p) => p.numero === ativo)
 
   return (
-    <div className={estilos.telas} ref={ref}>
-      <ul className={estilos.telasLista}>
+    <figure className={estilos.grafico} data-ativo={ativo ? '' : undefined}>
+      <figcaption className={estilos.graficoTopo}>
+        <p className={estilos.destaque}>{destaque}</p>
+        <div className={estilos.comoLer}>
+          <Legenda />
+          <p>{rotulos.comoLer}</p>
+        </div>
+      </figcaption>
+
+      <ul
+        className={estilos.linhas}
+        onPointerLeave={(e) => e.pointerType === 'mouse' && setAtivo(null)}
+      >
         {linhas.map((l) => (
-          <li key={l.rotulo} className={`${estilos.telaLinha} ${largo ? estilos.linhaLarga : ''}`}>
-            <span className={estilos.telaNome}>{l.rotulo}</span>
-            <span className={estilos.telaTrilho} aria-hidden="true">
-              {l.total > 0 && (
-                <span className={estilos.telaPilha} data-medida={(l.total / maior) * 100}>
-                  {l.partes
-                    .filter((parte) => parte.total > 0)
-                    .map((parte) => (
-                      <span
-                        key={parte.nivel}
-                        className={`${estilos.telaParte} ${CLASSE_NIVEL[parte.nivel]}`}
-                        data-medida={(parte.total / l.total) * 100}
-                      />
-                    ))}
-                </span>
-              )}
+          <li key={l.rotulo} className={estilos.linha}>
+            <span className={estilos.linhaNome}>
+              {l.codigo && <strong className={estilos.codigo}>{l.codigo}</strong>}
+              {l.rotulo}
             </span>
-            <span className={estilos.telaTotal}>
-              {l.total}
-              <span className="apenasLeitor">
-                {' '}
-                {rotulos.problemasDoisPontos}{' '}
-                {l.partes
-                  .filter((parte) => parte.total > 0)
-                  .map((parte) => `${parte.total} ${nomeNivel[parte.nivel].toLowerCase()}`)
-                  .join(', ')}
-              </span>
-            </span>
+            <span className={estilos.linhaTotal}>{l.problemas.length}</span>
+            {l.problemas.length === 0 ? (
+              <span className={estilos.vazio}>{rotulos.nenhum}</span>
+            ) : (
+              <ul className={estilos.blocos}>
+                {l.problemas.map((p) => (
+                  <li
+                    key={p.numero}
+                    className={`${estilos.bloco} ${CLASSE_NIVEL[p.gravidade]}`}
+                    data-em-foco={ativo === p.numero ? '' : undefined}
+                    onPointerEnter={(e) => e.pointerType === 'mouse' && setAtivo(p.numero)}
+                    onClick={() => setAtivo(p.numero)}
+                  >
+                    <span aria-hidden="true">{p.numero}</span>
+                    <span className="apenasLeitor">{descrever(p)}</span>
+                  </li>
+                ))}
+              </ul>
+            )}
           </li>
         ))}
       </ul>
-      <Legenda />
-    </div>
+
+      <p className={estilos.leitura} aria-live="polite">
+        {problemaAtivo ? (
+          <>
+            <strong>{descrever(problemaAtivo)}.</strong> {rotulos.heuristicas}:{' '}
+            {listar(problemaAtivo.heuristicas)}. {rotulos.telas}: {listar(problemaAtivo.telas)}.
+          </>
+        ) : (
+          rotulos.dica
+        )}
+      </p>
+
+      <details className={estilos.tabela}>
+        <summary>{rotulos.verTabela}</summary>
+        <div className={estilos.tabelaRolagem}>
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">{colunaRotulo}</th>
+                {niveis.map((nivel) => (
+                  <th key={nivel.nivel} scope="col">
+                    {nivel.nome}
+                  </th>
+                ))}
+                <th scope="col">{rotulos.total}</th>
+              </tr>
+            </thead>
+            <tbody>
+              {linhas.map((l) => (
+                <tr key={l.rotulo}>
+                  <th scope="row">{l.codigo ? `${l.codigo} ${l.rotulo}` : l.rotulo}</th>
+                  {niveis.map((nivel) => (
+                    <td key={nivel.nivel}>
+                      {l.problemas.filter((p) => p.gravidade === nivel.nivel).length}
+                    </td>
+                  ))}
+                  <td>{l.problemas.length}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </details>
+    </figure>
   )
 }
 
@@ -247,12 +310,20 @@ export default function AvaliacaoHeuristica() {
 
       <Secao numero="04" id="por-heuristica" titulo="Problemas por heurística">
         <p className={`textoCorrido ${pagina.intro}`}>{dados.heuristicasIntro}</p>
-        <BarrasEmpilhadas linhas={porHeuristica} largo />
+        <GraficoProblemas
+          linhas={porHeuristica}
+          destaque={dados.heuristicasDestaque}
+          colunaRotulo={rotulos.colunaHeuristica}
+        />
       </Secao>
 
       <Secao numero="05" id="por-tela" titulo="Problemas por tela">
         <p className={`textoCorrido ${pagina.intro}`}>{dados.telasIntro}</p>
-        <BarrasEmpilhadas linhas={porTela} />
+        <GraficoProblemas
+          linhas={porTela}
+          destaque={dados.telasDestaque}
+          colunaRotulo={rotulos.colunaTela}
+        />
       </Secao>
 
       <Secao numero="06" id="resultados" titulo="Resultados">

@@ -197,17 +197,30 @@ export const avaliacaoHeuristica = {
     heuristicas: 'Heurísticas',
     legenda: 'Legenda de gravidade',
     escala: 'Escala de gravidade de Nielsen',
-    problemasDoisPontos: 'problemas:',
+    problema: 'Problema',
+    telas: 'Telas',
+    e: 'e',
+    comoLer: 'Cada quadrado é um problema. O número dentro dele é o mesmo da planilha.',
+    dica: 'Passe o mouse ou toque em um quadrado para ver qual é o problema e onde mais ele aparece.',
+    nenhum: 'Nenhum problema',
+    verTabela: 'Ver os números em tabela',
+    colunaHeuristica: 'Heurística',
+    colunaTela: 'Tela',
+    total: 'Total',
   },
 
   principaisIntro:
     'Os 5 problemas de gravidade grande. Os outros 9 estão na planilha.',
 
   heuristicasIntro:
-    'Quantos problemas ferem cada heurística. A cor mostra a gravidade, e o número ao lado é o total. Um problema pode ferir mais de uma heurística, por isso a soma passa de 14.',
+    'Cada linha é uma heurística, da mais ferida para a menos ferida. Como um problema pode ferir mais de uma heurística, o mesmo quadrado aparece em mais de uma linha.',
+
+  heuristicasDestaque: 'H1 e H4 foram as heurísticas mais feridas, com 5 problemas cada.',
 
   telasIntro:
-    'Quantos problemas cada tela acumula, separados pela gravidade. Um problema pode aparecer em mais de uma tela.',
+    'A mesma leitura, agora por tela. Um problema pode aparecer em mais de uma tela.',
+
+  telasDestaque: 'A tela inicial concentra mais problemas: 5 dos 14.',
 
   resultados: [
     'São 14 problemas: 5 grandes, 7 pequenos e 2 cosméticos. Nenhum foi considerado catastrófico.',

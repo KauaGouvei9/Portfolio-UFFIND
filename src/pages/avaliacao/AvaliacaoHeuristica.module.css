@@ -1,7 +1,8 @@
 /* Avaliacao Heuristica.
    Gravidade e uma ordem (cosmetico < pequeno < grande), entao usa uma escala
    de um tom so, do azul-claro ao quase preto. Cada nivel tambem tem numero
-   ou texto ao lado: a cor nunca carrega a informacao sozinha. */
+   ou texto ao lado: a cor nunca carrega a informacao sozinha. O tom claro
+   (50%) foi conferido: passa de 2:1 contra o --papel-alt. */
 
 .g3 {
   --cor-nivel: var(--tinta);
@@ -14,7 +15,7 @@
 }
 
 .g1 {
-  --cor-nivel: color-mix(in srgb, var(--azul-uff) 30%, var(--papel-alt));
+  --cor-nivel: color-mix(in srgb, var(--azul-uff) 50%, var(--papel-alt));
   --texto-nivel: var(--tinta);
 }
 
@@ -23,7 +24,7 @@
   flex-shrink: 0;
   width: 0.875rem;
   height: 0.875rem;
-  border-radius: 50%;
+  border-radius: var(--raio);
   background-color: var(--cor-nivel);
 }
 
@@ -258,90 +259,188 @@
 }
 
 /* ==========================================================================
-   Problemas por heuristica e por tela: barras empilhadas
+   Problemas por heuristica e por tela: grafico de unidades
    ========================================================================== */
-.telas {
-  display: grid;
-  gap: var(--e-2);
-  margin-top: var(--e-3);
+.grafico {
+  margin: var(--e-3) 0 0;
   padding: var(--e-3);
   border: 1px solid var(--linha);
   border-radius: var(--raio);
   background-color: var(--papel-alt);
 }
 
-.telasLista {
+.graficoTopo {
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
+  margin-bottom: var(--e-2);
 }
 
-.telaLinha {
+.destaque {
+  font-family: var(--fonte-titulo);
+  font-size: var(--t-lg);
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--tinta);
+  text-wrap: balance;
+}
+
+.comoLer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem var(--e-3);
+  font-size: var(--t-sm);
+  color: var(--tinta-media);
+}
+
+.linhas {
+  display: flex;
+  flex-direction: column;
+}
+
+.linha {
   display: grid;
-  grid-template-columns: 9.5rem 1fr 2rem;
+  grid-template-columns: minmax(0, 20rem) 2rem 1fr;
   align-items: center;
   gap: var(--e-2);
+  padding: 0.625rem 0;
+  border-top: 1px solid var(--linha);
   font-size: var(--t-sm);
 }
 
-/* heuristicas tem nomes longos: coluna do rotulo mais larga */
-@media (min-width: 700px) {
-  .linhaLarga {
-    grid-template-columns: 19rem 1fr 2rem;
-  }
+.linha:last-child {
+  border-bottom: 1px solid var(--linha);
 }
 
-@media (max-width: 480px) {
-  .telaLinha {
-    grid-template-columns: 1fr 2rem;
-    row-gap: 0.25rem;
-  }
-
-  .telaNome {
-    grid-column: 1 / -1;
-  }
-}
-
-.telaNome {
+.linhaNome {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
   font-weight: 600;
 }
 
-.telaTrilho {
-  display: block;
-  height: 1.25rem;
-  border-radius: var(--raio);
-  background-color: var(--papel);
+.codigo {
+  flex-shrink: 0;
+  width: 2.25rem;
+  color: var(--azul-uff);
 }
 
-.telaPilha {
-  display: flex;
-  gap: 2px;
-  height: 100%;
-  width: calc(var(--medida, 0) * 1%);
-}
-
-.telaParte {
-  display: block;
-  flex: var(--medida, 1) 1 0;
-  height: 100%;
-  background-color: var(--cor-nivel);
-}
-
-.telaParte:first-child {
-  border-radius: var(--raio) 0 0 var(--raio);
-}
-
-.telaParte:last-child {
-  border-radius: 0 var(--raio) var(--raio) 0;
-}
-
-.telaParte:only-child {
-  border-radius: var(--raio);
-}
-
-.telaTotal {
+.linhaTotal {
   font-family: var(--fonte-titulo);
   font-size: var(--t-md);
   font-weight: 700;
+  font-variant-numeric: tabular-nums;
   text-align: right;
+}
+
+.blocos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3px;
+}
+
+.bloco {
+  display: grid;
+  place-items: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: var(--raio);
+  background-color: var(--cor-nivel);
+  color: var(--texto-nivel);
+  font-family: var(--fonte-titulo);
+  font-size: var(--t-sm);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  cursor: pointer;
+  transition: opacity var(--transicao);
+}
+
+/* um problema em foco: ele fica aceso em todas as linhas, o resto apaga */
+.grafico[data-ativo] .bloco {
+  opacity: 0.2;
+}
+
+.grafico[data-ativo] .bloco[data-em-foco] {
+  opacity: 1;
+  outline: 2px solid var(--marca);
+  outline-offset: 2px;
+}
+
+.vazio {
+  font-style: italic;
+  color: var(--tinta-media);
+}
+
+@media (max-width: 560px) {
+  .linha {
+    grid-template-columns: 1fr 2rem;
+    row-gap: 0.5rem;
+  }
+
+  .blocos,
+  .vazio {
+    grid-column: 1 / -1;
+  }
+
+  .codigo {
+    width: auto;
+  }
+}
+
+/* frase que explica o quadrado em foco; altura fixa para a pagina nao pular */
+.leitura {
+  min-height: 3lh;
+  margin-top: var(--e-2);
+  font-size: var(--t-sm);
+  color: var(--tinta-media);
+  max-width: 72ch;
+}
+
+.leitura strong {
+  color: var(--tinta);
+}
+
+.tabela {
+  margin-top: var(--e-1);
+  font-size: var(--t-sm);
+}
+
+.tabela summary {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  font-weight: 600;
+  color: var(--azul-uff);
+  cursor: pointer;
+}
+
+.tabelaRolagem {
+  overflow-x: auto;
+}
+
+.tabela table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.tabela th,
+.tabela td {
+  padding: 0.5rem 0.75rem;
+  border-bottom: 1px solid var(--linha);
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.tabela th:first-child {
+  text-align: left;
+}
+
+.tabela thead th {
+  color: var(--tinta-media);
+  font-weight: 600;
+}
+
+.tabela tbody th {
+  font-weight: 600;
 }

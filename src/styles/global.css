@@ -16,6 +16,12 @@
   --ok: #14705a;           /* verde de confirmacao (pontos positivos) */
   --inspirador: #9a3412;   /* terceira categoria da analise competitiva */
 
+  /* uma cor por fase, so no Roadmap. Conferidas para daltonismo e contraste */
+  --fase-imersao: #2a67b0;
+  --fase-ideacao: #0e8a6f;
+  --fase-prototipacao: #c2410c;
+  --fase-avaliacao: #8a4fbf;
+
   /* tipografia */
   --fonte-titulo: 'Bricolage Grotesque', system-ui, sans-serif;
   --fonte-corpo: 'Public Sans', system-ui, sans-serif;
